@@ -3,8 +3,8 @@ import App from './App.jsx';
 import { ChakraProvider } from "@chakra-ui/react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom"
-import theme from './components/Theme.js'
-import { LanguageProvider } from './components/translation/LanguageProvider.jsx';
+import theme from './Theme.js'
+import { LanguageProvider } from './tools/translation/LanguageProvider.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

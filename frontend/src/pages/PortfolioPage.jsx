@@ -1,9 +1,10 @@
 import Navbar from "../components/Navbar";
 import { Container, Flex, Text, Image, useColorModeValue, Link } from "@chakra-ui/react";
 import profileImage from '../assets/images/profile.png';
-import { useLanguage } from "../components/translation/useLanguage";
+import { useLanguage } from "../tools/translation/useLanguage";
 import { IoIosArrowDroprightCircle, IoIosArrowDropleftCircle } from "react-icons/io";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import NameSection from "../components/NameSection";
 
 
 
@@ -15,38 +16,8 @@ const PortfolioPage = () => {
   return (
     <>
     <Navbar />
-
-     {/* NAME */}
-    <Container maxW="100%" px={4} minH="calc(100vh - 300px)">
-      <Flex
-        direction={{ base: "column", sm: "row" }}  
-        align="center"  
-        justify="center" 
-        w="80%"
-        minH="calc(100vh - 300px)"
-      >
-        <Flex flex="1" justifyContent="center" alignItems="center">
-          <Image
-            src={profileImage}
-            alt="Profile"
-            borderRadius="full"
-            boxSize="300px"  
-            objectFit="cover"
-          />
-        </Flex>
-        <Flex 
-          flex="1" 
-          textAlign="left" 
-          pt={{ base: 10, sm: 0 }}
-          direction="column" 
-          align="flex-start"
-          ml={{ sm: 2 }} 
-        >
-          <Text fontSize="5xl">Konstantinos Mourousidis</Text>
-          <Text fontSize="2xl" fontWeight="bold">Software Engineer</Text>
-        </Flex>
-      </Flex>
-    </Container>
+    <NameSection />
+    
 
     {/* PROFILE */}
     <Container maxW="100%" px={300} minH="calc(100vh - 100px)" bg={useColorModeValue("gray.400","gray.800")}>
