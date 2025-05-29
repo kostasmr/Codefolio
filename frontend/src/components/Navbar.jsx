@@ -29,7 +29,6 @@ const Navbar = () => {
           <Link _hover={{ textDecoration: 'none', color: 'teal.500' }}>{t.certifications}</Link>
           <Link _hover={{ textDecoration: 'none', color: 'teal.500' }}>{t.skills}</Link>
         </HStack>
-        <Flex>
           <HStack spacing={2} alignItems={"center"} justify="flex-end" >
             <Button onClick={toggleLanguage} fontSize={13}>
               {language === "en" ? "El" : "En"}
@@ -38,7 +37,6 @@ const Navbar = () => {
               { colorMode === "light" ? <MdOutlineNightlight/> : <CiLight/>}
             </Button>
           </HStack>
-        </Flex>
       </Flex>
 
     </Container>
