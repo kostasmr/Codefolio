@@ -1,0 +1,20 @@
+{
+    "en": {
+        "profile": "Profile",
+        "education": "Education",
+        "projects": "Projects",
+        "experience": "Work Experience",
+        "certifications": "Certifications",
+        "skills": "Skills",
+        "contacts": "Contacts"
+    },
+    "el": {
+      "profile": "Προφίλ",
+      "education": "Εκπαίδευση",
+      "projects": "Εργασίες",
+      "experience": "Εμπειρία",
+      "certifications": "Πτυχία",
+      "skills": "Δεξιότητες",
+      "contacts": "Επικοινωνία"
+    }
+  }
