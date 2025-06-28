@@ -2,8 +2,18 @@ import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
   fonts: {
-    heading: "'Josefin Sans', sans-serif",  
-    body: "'Josefin Sans', sans-serif", 
+    heading: "'Futura', 'Trebuchet MS', Arial, sans-serif",
+    body: "'Futura', 'Trebuchet MS', Arial, sans-serif",
+  },
+    styles: {
+      global: {
+        'html, body': {
+          fontSize: '16px',
+          fontWeight: 400,
+          lineHeight: '1.5',
+          bg: 'black'
+        },
+      },
   },
 });
 
