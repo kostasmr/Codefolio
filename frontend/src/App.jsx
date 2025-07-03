@@ -6,7 +6,7 @@ function App() {
   return (
     <>
         <Routes>
-          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/" element={<PortfolioPage />} />
         </Routes>
     </>
   )
