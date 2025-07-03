@@ -1,5 +1,6 @@
 import gradientImg from '../assets/images/letswork-image.png';
-import { Container, Image, Text, Flex} from "@chakra-ui/react";
+import { Container, Image, Text, Flex, Link} from "@chakra-ui/react";
+import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 function Contact () {
     return (
@@ -55,8 +56,15 @@ function Contact () {
                         justifyContent={"space-between"}
                     >
                         <Text fontWeight={"bold"}>Send me a message</Text>
-                        <Text marginRight={"70px"}>kmourousidis@gmail.com</Text>
-                        <Text>linkedin github</Text>
+                        <Text marginRight={"90px"}>kmourousidis@gmail.com</Text>
+                        <Flex gap={5}>
+                            <Link href="https://www.linkedin.com/in/konstantinos-mourousidis" isExternal _hover={{ color: "orange.400" }}>
+                                <FaLinkedin size={30} />
+                            </Link>
+                            <Link href="https://github.com/kostasmr" isExternal _hover={{ color: "orange.400" }}>
+                                <FaGithubSquare size={30} />
+                            </Link>
+                        </Flex>
                     </Flex>
                 </Flex>
             </Container>
