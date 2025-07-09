@@ -11,7 +11,8 @@ const theme = extendTheme({
           fontSize: '16px',
           fontWeight: 400,
           lineHeight: '1.5',
-          bg: 'black'
+          bg: 'black',
+          scrollBehavior: 'smooth',
         },
       },
   },
