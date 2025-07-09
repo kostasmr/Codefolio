@@ -4,7 +4,7 @@ import { Container, Text, Image, Flex} from "@chakra-ui/react";
 function Experience () {
     return (
         <>
-            <Container maxW="100%" height="auto" bg={"black"} paddingTop={"200px"}>
+            <Container id='experience' maxW="100%" height="auto" bg={"black"} paddingTop={"200px"}>
                 <Text align={"center"}>/03</Text>
                 <Text align={"center"} marginTop={"80px"} fontSize={"26px"}>Experience</Text> 
                 <Flex justify={"space-between"} marginTop={"150px"}>
