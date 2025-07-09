@@ -10,7 +10,7 @@ const MotionBox = motion(Box);
 
 function Skills () {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: "-20px" });
 
     const skills = [
         { name: "Teamwork", percentage: 80 },
@@ -18,17 +18,16 @@ function Skills () {
         { name: "Problem Solving", percentage: 85 },
         { name: "Creativity", percentage: 70 },
         { name: "Adaptability", percentage: 90 },
-        { name: "Leadership", percentage: 65 }
     ];
 
     const getGradient = (percentage) => {
-        const whiteStart = Math.min(percentage + 7, 100); // avoid going over 100%
+        const whiteStart = Math.min(percentage + 7, 100);
         return `linear-gradient(to right, #B0E8E0 0%, #142425 ${percentage}%, #FFFFFF ${whiteStart}%, #FFFFFF 100%)`;
     };
 
     return (
         <>
-            <Container maxW="100%" height="auto" bg={"black"} paddingTop={"200px"}>
+            <Container id="skills" maxW="100%" height="auto" bg={"black"} paddingTop={"200px"}>
                 <Flex justify={"space-between"} paddingInline={"10%"}>
                     <Text>/05</Text>
                     <Text fontSize={"26px"}>Hard Skills</Text> 
