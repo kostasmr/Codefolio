@@ -4,7 +4,7 @@ import { Container, Flex, Text, Image} from "@chakra-ui/react";
 function Education () {
     return (
         <>
-            <Container maxW="100%" height="auto" bg={"black"} paddingTop={"200px"}>
+            <Container id="education" maxW="100%" height="auto" bg={"black"} paddingTop={"200px"}>
                 <Flex justify={"space-between"}>
                     <Flex marginLeft={"10%"} direction={"column"}>
                         <Text>/02</Text>
