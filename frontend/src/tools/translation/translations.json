@@ -6,7 +6,8 @@
         "experience": "Work Experience",
         "certifications": "Certifications",
         "skills": "Skills",
-        "contacts": "Contacts"
+        "contacts": "Contacts",
+        "name": "Konstantinos Mourousidis"
     },
     "el": {
       "profile": "Προφίλ",
@@ -15,6 +16,7 @@
       "experience": "Εμπειρία",
       "certifications": "Πτυχία",
       "skills": "Δεξιότητες",
-      "contacts": "Επικοινωνία"
+      "contacts": "Επικοινωνία",
+      "name": "Κωνσταντίνος Μουρουσίδης"
     }
   }
