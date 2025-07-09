@@ -5,7 +5,7 @@ import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 function Contact () {
     return (
         <>
-            <Container maxW="100%" height="100vh" padding={5} bg={"black"} position={'relative'}>
+            <Container id="contact" maxW="100%" height="100vh" padding={5} bg={"black"} position={'relative'}>
                 <Image
                     src={gradientImg}
                     alt="Gradient Image"
