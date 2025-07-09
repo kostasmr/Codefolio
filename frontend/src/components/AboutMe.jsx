@@ -4,7 +4,7 @@ import { Container, Flex, Text, Image} from "@chakra-ui/react";
 function AboutMe () {
     return (
         <>
-            <Container maxW="80%" height="auto" bg={"black"}>
+            <Container id="about" maxW="80%" height="auto" bg={"black"}>
                 <Flex
                     justify={"space-between"}
                     align={"center"}
