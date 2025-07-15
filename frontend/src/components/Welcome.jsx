@@ -1,5 +1,5 @@
 import gradientImg from '../assets/images/gradient-image.png';
-import profileImg from '../assets/images/profile.png';
+import profileImg from '../assets/images/my-image.jpg';
 import arrowDown from '../assets/icons/arrow-down.png';
 import menu from '../assets/icons/menu.png';
 import { Container, Image, Text, Flex, Box} from "@chakra-ui/react";
@@ -85,12 +85,12 @@ function Welcome () {
                         position={"relative"}
                     >
                         <Text 
-                            fontSize={"40px"} 
+                            fontSize={"45px"} 
                             fontWeight={"bold"} 
                             letterSpacing={"10px"} 
                             align={"center"} 
                             position={"absolute"} 
-                            top="26%" 
+                            top="21%" 
                             zIndex="3"
                             >
                                 SOFTWARE <br /> ENGINEER
@@ -102,8 +102,8 @@ function Welcome () {
                             position="absolute" 
                             zIndex="0"
                             transform="rotate(4deg)" 
-                            top="35%"
-                            left="calc(50% - 60px)"
+                            top="31%"
+                            left="calc(50% - 45px)"
                         />
                         <Box 
                             w={"190px"}
@@ -112,15 +112,15 @@ function Welcome () {
                             position="absolute" 
                             zIndex="1"
                             transform="rotate(-3deg)" 
-                            top="40%"
-                            left="calc(50% - 120px)"
+                            top="43%"
+                            left="calc(50% - 140px)"
                         />
                         <Image
                             src={profileImg}
                             alt="Profile Image"
                             objectFit="cover"
-                            width="190px"
-                            height="220px"
+                            width="240px"
+                            height="280px"
                             zIndex="2"
                         />
                         
@@ -165,7 +165,7 @@ function Welcome () {
                         <Text as="a" href="#projects" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Projects</Text>
                         <Text as="a" href="#skills" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Skills</Text>
                         <Text as="a" href="#contact" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Contact</Text>
-                        <IoClose cursor="pointer" onClick={toggleNav} size={"30px"} _hover={ { color: "#97B9B2" }}/>
+                        <IoClose cursor="pointer" onClick={toggleNav} size={"30px"} _hover={{ color: "teal" }}/>
 
                     </MotionBox>
                 )}                
