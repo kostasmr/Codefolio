@@ -2,10 +2,14 @@ import { Container, Text, Flex, HStack, Image, Box} from "@chakra-ui/react";
 import project01 from '../assets/images/tickest-image.png';
 import project02 from '../assets/images/apotheke-image.png';
 import project03 from '../assets/images/webdesign-image.png';
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { IoClose } from "react-icons/io5";
+
 
 const MotionFlex = motion(Flex);
+const MotionBox = motion(Box);
+
 
 
 const projectsData = [
@@ -21,11 +25,27 @@ const projectsData = [
 function Projects () {
 
     const [projects, setProjects] = useState(projectsData);
+    const [showProject, setShowProject] = useState(false);
+
 
     const rotateProjects = (index) => {
         const newOrder = [...projects.slice(index), ...projects.slice(0, index)];
         setProjects(newOrder);
     };
+
+    const openProject = () => setShowProject(prev => !prev);
+
+    // Disable scroll when a project is open
+    useEffect(() => {
+        if (showProject) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [showProject]);
 
     return (
         <>
@@ -41,7 +61,13 @@ function Projects () {
                                 key={project.id}
                                 layout
                                 direction="column"
-                                onClick={() => rotateProjects(index)}
+                                onClick={() => {
+                                      if (index === 0) {
+                                        openProject();
+                                    } else {
+                                        rotateProjects(index);
+                                    }
+                                }}
                                 whileHover={{ scale: 1.03 }}
                                 transition={{ layout: { duration: 1.0, type: "spring" } }}
                                 cursor="pointer"
@@ -67,6 +93,34 @@ function Projects () {
                         ))}
                     </HStack>
                 </Box>
+                <AnimatePresence>
+                {showProject && (
+                    <MotionBox
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        position="fixed"
+                        top={0}
+                        left={0}
+                        width="100vw"
+                        height="100vh"
+                        padding={5}
+                        bg="rgba(0, 0, 0, 0.90)"
+                        color="white"
+                        zIndex={2000}
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        gap={6}
+                    >
+                        <Text>Project details</Text>
+                        <IoClose cursor="pointer" onClick={openProject} size={"30px"} _hover={{ color: "teal" }}/>
+
+                    </MotionBox>
+                )}                
+                </AnimatePresence>
             </Container>
         </>
     )
