@@ -13,7 +13,7 @@ const ScrollToTopButton = () => {
 
       if (currentScrollY === 0) {
         setShowButton(false); // hide at top
-      } else if (currentScrollY < lastScrollY.current ) {
+      } else if (currentScrollY < lastScrollY.current) {
         setShowButton(true); // scrolling up -> show button
       } else {
         setShowButton(false); // scrolling down -> hide button
