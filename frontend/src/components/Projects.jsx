@@ -1,10 +1,13 @@
-import { Container, Text, Flex, HStack, Image, Box} from "@chakra-ui/react";
+import { Container, Text, Flex, HStack, Image, Box, Grid, GridItem} from "@chakra-ui/react";
 import project01 from '../assets/images/tickest-image.png';
 import project02 from '../assets/images/apotheke-image.png';
 import project03 from '../assets/images/webdesign-image.png';
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
+import { TbBrandKotlin } from "react-icons/tb";
+import { SiAndroidstudio } from "react-icons/si";
+import { FaNode } from "react-icons/fa";
 
 
 const MotionFlex = motion(Flex);
@@ -13,7 +16,7 @@ const MotionBox = motion(Box);
 
 
 const projectsData = [
-    { id: 1, title: "Tickest", image: project01, about: "This is an app that make this is an mappp tha make this is this is an app tha mmek this is an app app that make" },
+    { id: 1, title: "Tickest", image: project01, stack: ["Kotlin", "Android SDK", "Node.js"], color: "#e00f5bff", about: "Tickest is a modern Android mobile application developed for seamless event booking experiences. Whether it's concerts, theater, or sports events, Tickest lets users discover, book, and manage tickets directly from their phones. Built during a bootcamp project by a team of three, we collaborated using the Scrum methodology and followed a design-first approach based on Figma mockups." },
     { id: 2, title: "Apotheke", image: project02, about: "This is an app that make this is an mappp tha make this is this is an app tha mmek this is an app app that make" },
     { id: 3, title: "Web design", image: project03, about: "This is an app that make this is an mappp tha make this is this is an app tha mmek this is an app app that make" },
     { id: 4, title: "Tickest", image: project01, about: "This is an app that make this is an mappp tha make this is this is an app tha mmek this is an app app that make" },
@@ -25,7 +28,7 @@ const projectsData = [
 function Projects () {
 
     const [projects, setProjects] = useState(projectsData);
-    const [showProject, setShowProject] = useState(false);
+    const [activeProject, setActiveProject] = useState(null);
 
 
     const rotateProjects = (index) => {
@@ -33,11 +36,9 @@ function Projects () {
         setProjects(newOrder);
     };
 
-    const openProject = () => setShowProject(prev => !prev);
-
     // Disable scroll when a project is open
     useEffect(() => {
-        if (showProject) {
+        if (activeProject) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "";
@@ -45,7 +46,17 @@ function Projects () {
         return () => {
             document.body.style.overflow = "";
         };
-    }, [showProject]);
+    }, [activeProject]);
+
+    const takeStackIcon = (stack) => {
+        if(stack == "Kotlin"){
+            return <TbBrandKotlin/>
+        } else if(stack == "Android SDK"){
+            return <SiAndroidstudio/>
+        } else if(stack == "Node.js"){
+            return <FaNode/>
+        }
+    }
 
     return (
         <>
@@ -63,7 +74,7 @@ function Projects () {
                                 direction="column"
                                 onClick={() => {
                                       if (index === 0) {
-                                        openProject();
+                                        setActiveProject(project)
                                     } else {
                                         rotateProjects(index);
                                     }
@@ -94,7 +105,7 @@ function Projects () {
                     </HStack>
                 </Box>
                 <AnimatePresence>
-                {showProject && (
+                {activeProject && (
                     <MotionBox
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -106,7 +117,7 @@ function Projects () {
                         width="100vw"
                         height="100vh"
                         padding={5}
-                        bg="rgba(0, 0, 0, 0.90)"
+                        bg="#1e1e1eff"
                         color="white"
                         zIndex={2000}
                         display="flex"
@@ -115,9 +126,49 @@ function Projects () {
                         justifyContent="center"
                         gap={6}
                     >
-                        <Text>Project details</Text>
-                        <IoClose cursor="pointer" onClick={openProject} size={"30px"} _hover={{ color: "teal" }}/>
-
+                        <Box w={"95%"} h={"90%"} bg={"black"}>
+                            <Grid templateColumns="repeat(10, 1fr)" gap="1"  h={"full"}>
+                                <GridItem colSpan={4} >
+                                    <Flex h={"full"} justify={"center"} align={"center"}>
+                                        <Image
+                                            src={activeProject.image}
+                                            objectFit="cover"
+                                            w="95%"
+                                            h="95%"
+                                            alt={activeProject.title}
+                                        />
+                                    </Flex>
+                                </GridItem>
+                                <GridItem colSpan={6}>
+                                    <Flex justify={"center"} align={"center"} h={"full"}>
+                                        <Flex direction={"column"} w={"95%"} h={"95%"}>
+                                            <Flex justify={"end"}>
+                                                <IoClose cursor="pointer" onClick={() => setActiveProject(null)} size={"30px"}/>
+                                            </Flex>
+                                            
+                                            <Text fontWeight={"bold"} fontSize={"45px"}>{activeProject.title}</Text>
+                                            <Text mt={"10px"} fontSize={"45px"}>Event Booking Android App</Text>
+                                            <Text mt={"40px"} w={"80%"} fontSize={"20px"} letterSpacing={"3%"}>{activeProject.about}</Text>
+                                            <Flex mt={"40px"} gap={"50px"}>
+                                                {activeProject.stack?.map((tech, idx) => (
+                                                    <Flex key={idx} direction={"column"} align={"center"} justify={"center"}  cursor={"pointer"} role="group">
+                                                        <Box fontSize="80px" color={"#575757ff"} _groupHover={{ color: "white" }}>
+                                                            {takeStackIcon(tech)}
+                                                        </Box>
+                                                        <Text mt={"10px"} color={"#575757ff"} _groupHover={{ color: "white" }}>{tech}</Text>
+                                                    </Flex>
+                                                ))}
+                                            </Flex>
+                                            <Flex align={"end"} h={"full"} justify={"space-between"}>
+                                                <Text>project 0{activeProject.id}</Text>
+                                                <Text textDecor={"underline"}>code</Text>
+                                                <Text textDecor={"underline"}>demo</Text>
+                                            </Flex>
+                                        </Flex>
+                                    </Flex>
+                                </GridItem>
+                            </Grid>
+                        </Box>
                     </MotionBox>
                 )}                
                 </AnimatePresence>
