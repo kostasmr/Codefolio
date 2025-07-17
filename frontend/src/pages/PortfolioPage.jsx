@@ -7,6 +7,7 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import Skills from "../components/Skills";
 import ScrollToTopButton from "../components/ScrollOnTop";
+import {  Flex } from "@chakra-ui/react";
 
 
 
@@ -15,14 +16,17 @@ const PortfolioPage = () => {
   
   return (
     <>
-      <Welcome />
-      <AboutMe/>
-      <Education/>
-      <Experience/>
-      <Projects/>
-      <Skills/>
-      <Contact/>
-      <ScrollToTopButton/>
+      <Flex gap={"200px"} direction={"column"}>
+        <Welcome />
+        <AboutMe/>
+        <Education/>
+        <Experience/>
+        <Projects/>
+        <Skills/>
+        <Contact/>
+        <ScrollToTopButton/>
+      </Flex>
+
     </>
   )
 }
