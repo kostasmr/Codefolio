@@ -159,7 +159,7 @@ function Welcome () {
                         justifyContent="center"
                         gap={6}
                     >
-                        <Text as="a" href="#about" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>About</Text>
+                        <Text as="a" href="#about" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>About Me</Text>
                         <Text as="a" href="#education" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Education</Text>
                         <Text as="a" href="#experience" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Experience</Text>
                         <Text as="a" href="#projects" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Projects</Text>
