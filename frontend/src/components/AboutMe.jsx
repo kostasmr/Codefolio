@@ -4,7 +4,7 @@ import { Container, Flex, Text, Image} from "@chakra-ui/react";
 function AboutMe () {
     return (
         <>
-            <Container id="about" maxW="80%" height="auto" bg={"black"}>
+            <Container id="about" maxW="80%">
                 <Flex
                     justify={"space-between"}
                     align={"center"}
@@ -18,7 +18,7 @@ function AboutMe () {
                     Building Digital Experiences That<br />Solve Real Problems
                 </Text>
 
-                <Flex justify={"center"} marginTop="54px" paddingBottom={"200px"}>
+                <Flex h="fit-content" justify={"center"} marginTop="54px">
                     <Image
                         src={gradientImg}
                         alt="Gradient Image"
