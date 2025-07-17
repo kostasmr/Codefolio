@@ -1,5 +1,5 @@
 // components/JobOverlayCard.jsx
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, Grid, GridItem } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { TbHandClick } from "react-icons/tb";
@@ -10,9 +10,9 @@ const JobCard = ({ image, title, company, duration, responsibilities, tools }) =
     const [showDetails, setShowDetails] = useState(false);
 
     return (
-        <Flex justify="space-between" mt="100px">
-                <Box position="relative" width="60%">
-                    <Image src={image} alt={`${title}`} width="100%" />
+        <Flex justify="space-between" h="100%"> 
+                <Box position="relative" width="60%" >
+                    <Image src={image} alt={`${title}`} width="100%" h="100%" objectFit="cover"/>
 
                     {showDetails && 
                         <Box
@@ -25,20 +25,20 @@ const JobCard = ({ image, title, company, duration, responsibilities, tools }) =
                             color="white"
                             transition="0.3s ease"
                         >
-                            <Flex justify={"space-between"} direction={"column"} h={"100%"}>
-                                <Flex justify={"space-between"} marginTop={"5%"} marginInline={"5%"}>
-                                    <Text fontWeight="bold">{title}</Text>
-                                    <Text fontSize="14px">at {company}</Text>
-                                </Flex>
-                                
-                                <Flex gap={"10px"} direction={"column"}>
-                                    {responsibilities.map((item, idx) => (
-                                        <Text key={idx} marginStart="5%">• {item}</Text>
-                                    ))}
-                                </Flex>
-
-                                <Text textAlign={"end"} marginEnd={"5%"} marginBottom={"5%"}>{tools}</Text>
-                            </Flex>
+                            <Grid templateColumns="repeat(10, 1fr)" gap="1"  h={"full"}>
+                                <GridItem colSpan={4} ms={"10%"} mt={"15%"}>
+                                        <Text fontWeight="bold" fontSize={"32px"}>{title}</Text>
+                                        <Text mt={"20px"} fontSize="14px">at {company}</Text>
+                                </GridItem>
+                                <GridItem colSpan={6}>
+                                    <Flex gap={"20px"} direction={"column"} h={"full"} justify={"center"} w={"90%"}>
+                                        {responsibilities.map((item, idx) => (
+                                            <Text key={idx}>• {item}</Text>
+                                        ))}
+                                        <Text mt={"20px"} fontSize="14px">{tools}</Text>
+                                    </Flex>
+                                </GridItem>
+                            </Grid>
                         </Box>
                     }
                 </Box>
