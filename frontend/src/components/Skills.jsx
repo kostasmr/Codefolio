@@ -13,11 +13,11 @@ function Skills () {
     const isInView = useInView(ref, { once: true, margin: "-20px" });
 
     const skills = [
+        { name: "Problem Solving", percentage: 90 },
         { name: "Teamwork", percentage: 80 },
-        { name: "Communication", percentage: 75 },
-        { name: "Problem Solving", percentage: 85 },
-        { name: "Creativity", percentage: 70 },
-        { name: "Adaptability", percentage: 90 },
+        { name: "Adaptability", percentage: 85 },
+        { name: "Creativity", percentage: 75 },
+        { name: "Attention to Detail", percentage: 90 },
     ];
 
     const getGradient = (percentage) => {
@@ -27,22 +27,22 @@ function Skills () {
 
     return (
         <>
-            <Container id="skills" maxW="100%" height="auto" bg={"black"} paddingTop={"200px"}>
+            <Container id="skills" maxW="100%" height="100vh" bg={"black"}>
                 <Flex justify={"space-between"} paddingInline={"10%"}>
                     <Text>/05</Text>
                     <Text fontSize={"26px"}>Hard Skills</Text> 
                 </Flex>
-                <Flex paddingInline={"10%"} align={"center"} marginY={"300px"} justify={"space-between"}>
+                <Flex paddingInline={"10%"} align={"center"} justify={"space-between"} h="full">
                     <Flex direction={"column"} fontSize={"14px"}>
                         <Text>JAVA</Text>
                         <Text>PYTHON</Text>
                         <Text>HTML/CSS</Text>
-                        <Text>KOTLIN</Text>
+                        <Text>JAVASCRIPT</Text>
                         <Text>MOBILE DEV: KOTLIN</Text>
                         <Text>FRONTEND DEV: REACT.JS, ANGULAR</Text>
                         <Text>BACKEND DEV: NODE.JS, SPRING BOOT</Text>
                         <Text>DATABASES: MONGODB, MYYSQL</Text>
-                        <Text>TOOLS: VS CODE, ANDROID STUDIO, FIGMA, POSTMAN</Text>
+                        <Text>TOOLS: VS CODE, ANDROID SDK, GITHUB, FIGMA, POSTMAN</Text>
                     </Flex>
                     <Image 
                         src={hardSkillsImg}
@@ -52,10 +52,10 @@ function Skills () {
                         height="500px"                
                     />
                 </Flex>
-
-                    
+            </Container>
+            <Container maxW="100%" height="100vh" bg={"black"}>
                 <Text fontSize={"26px"} marginStart={"10%"}>Soft Skills</Text> 
-                <Flex paddingInline={"10%"} align={"center"} marginY={"300px"}>
+                <Flex paddingInline={"10%"} align={"center"} h="full">
                     <Image 
                         src={softSkillsImg}
                         alt="Soft Skills Image"
@@ -78,12 +78,12 @@ function Skills () {
                                     overflow="hidden"
                                 >
                                     <MotionBox
-                                    h="100%"
-                                    bg={getGradient(skill.percentage)}
-                                    initial={{ width: "0%" }}
-                                    animate={{ width: isInView ? "100%" : "0%" }}
-                                    transition={{ duration: 1, ease: "easeInOut" }}
-                                    borderRadius="full"
+                                        h="100%"
+                                        bg={getGradient(skill.percentage)}
+                                        initial={{ width: "0%" }}
+                                        animate={{ width: isInView ? "100%" : "0%" }}
+                                        transition={{ duration: 1, ease: "easeInOut" }}
+                                        borderRadius="full"
                                     />
                                 </Box>
                             </Box>
