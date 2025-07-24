@@ -7,7 +7,38 @@ import { useLanguage } from '../tools/translation/useLanguage';
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
+import ScrapbookAnimation from '../tools/ScrapbookAnimation';
 
+
+const textPositions = [
+    { top: "0%", x: -100, rotate: -20 },
+    { top: "13%", x: -40, rotate: -15 },
+    { top: "21%", x: 0, rotate: 0 },
+];
+
+const box1Positions = [
+    { top: "95%", left: "60%", rotate: 30 },
+    { top: "60%", left: "53%", rotate: 3 },
+    { top: "45%", left: "58%", rotate: -10 },
+    { top: "31%", left: "calc(50% - 45px)", x: 0, rotate: 4 },
+];
+
+const box2Positions = [
+    { top: "100%", left: "15%", rotate: -10 },
+    { top: "90%", left: "25%", rotate: 10 },
+    { top: "60%", left: "20%", rotate: -20 },
+    { top: "45%", left: "35%", rotate: 10 },
+    { top: "43%", left: "calc(50% - 140px)", x: 0, rotate: -2 },
+];
+
+const imagePositions = [
+  { top: "150%", x: 0, rotate: 10 },
+  { top: "95%", x: 0, rotate: 10 },
+  { top: "80%", x: 20, rotate: 15 },
+  { top: "60%", x: -40, rotate: -5 },
+  { top: "40%", x: -15, rotate: 5 },
+  { top: "33%", x: 0, rotate: 0 },
+];
 
 function Welcome () {
 
@@ -84,46 +115,23 @@ function Welcome () {
                         h={"full"}
                         position={"relative"}
                     >
-                        <Text 
-                            fontSize={"45px"} 
-                            fontWeight={"bold"} 
-                            letterSpacing={"10px"} 
-                            align={"center"} 
-                            position={"absolute"} 
-                            top="21%" 
-                            zIndex="3"
-                            >
-                                SOFTWARE <br /> ENGINEER
-                            </Text>
-                        <Box 
-                            w={"190px"} 
-                            h={"220px"} 
-                            bg={"#97B9B2"}
-                            position="absolute" 
-                            zIndex="0"
-                            transform="rotate(4deg)" 
-                            top="31%"
-                            left="calc(50% - 45px)"
-                        />
-                        <Box 
-                            w={"190px"}
-                            h={"220px"} 
-                            bg={"#132021"}
-                            position="absolute" 
-                            zIndex="1"
-                            transform="rotate(-3deg)" 
-                            top="43%"
-                            left="calc(50% - 140px)"
-                        />
-                        <Image
+                        <ScrapbookAnimation as={Text} positions={textPositions} fontSize="45px" fontWeight="bold" letterSpacing="10px" zIndex={3}>
+                            {t["software"]} <br /> {t["engineer"]}
+                        </ScrapbookAnimation>
+
+                        <ScrapbookAnimation as={Box} positions={box1Positions} w="190px" h="220px" bg="#97B9B2" zIndex={1} />
+
+                        <ScrapbookAnimation as={Box} positions={box2Positions} w="190px" h="220px" bg="#132021" zIndex={1} />
+
+                        <ScrapbookAnimation
+                            as={Image}
+                            positions={imagePositions}
                             src={profileImg}
-                            alt="Profile Image"
-                            objectFit="cover"
                             width="240px"
                             height="280px"
-                            zIndex="2"
+                            objectFit="cover"
+                            zIndex={2}
                         />
-                        
                     </Flex>
                     <Flex                    
                         paddingInline={"40px"}
@@ -133,7 +141,7 @@ function Welcome () {
                         <Text letterSpacing={"5px"} fontWeight={"bold"}>{t["name"]}</Text>
                         <Flex gap={5} align={"center"}>
                             <Image src={arrowDown} width={"30px"} alt="Arrow Icon"/>
-                            <Text letterSpacing={"5px"}>see my work</Text>
+                            <Text letterSpacing={"5px"}>{t["seemywork"]}</Text>
                         </Flex>
                     </Flex>
                 </Flex>
