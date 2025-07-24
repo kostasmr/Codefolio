@@ -25,6 +25,26 @@ const projectsData = [
     { id: 4, title: "XChangeIt", subtitle: "Currency Converter Web App", image: project04, stack: [{ tech: "React", link: "https://react.dev/"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#23b385ff", code: "https://github.com/kostasmr/XChangeIt", demo: "https://vimeo.com/1100094225", about: "XChangeIt is a modern currency converter web application that allows users to manage and convert currencies using both custom and live exchange rates. Built with full-stack technologies, this app provides a secure and responsive interface for personal currency management." },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      duration: 1.5,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 80 },
+  },
+};
+
 
 function Projects () {
 
@@ -72,10 +92,34 @@ function Projects () {
             <Container id="projects" maxW="100%" height="100vh" bg={"black"}>
                 <Flex h="full" direction={"column"} justify={"center"}>
                     <Flex justify={"space-between"} paddingInline={"10%"}>
-                        <Text fontSize={"26px"}>Projects</Text> 
-                        <Text>/04</Text>
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            <Text fontSize="26px">Projects</Text>
+                        </motion.div>
+                        
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            <Text>/04</Text>
+                        </motion.div>
                     </Flex>
-                    <Box w="100%" px="10%" mt="100px" h="50%">
+                    <MotionBox 
+                        w="100%" 
+                        px="10%" 
+                        mt="100px" 
+                        h="50%"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
                         <HStack spacing={6} align="start">
                             {projects.map((project, index) => (
                                 <MotionFlex
@@ -90,25 +134,26 @@ function Projects () {
                                         }
                                     }}
                                     whileHover={{ scale: 1.03 }}
-                                    transition={{ layout: { duration: 1.0, type: "spring" } }}
+                                    transition={{ layout: { duration: 1, type: "spring" } }}
                                     cursor="pointer"
-                                    w={index === 0 ? "100%" : "350px"}
-                                    h="auto"
+                                    w={index === 0 ? "450px" : "350px"}
+                                    h={index === 0 ? "450px" : "350px"}
                                     zIndex={index === 0 ? 1 : 0}
                                     boxShadow={index === 0 ? "lg" : "none"}
                                     overflow="hidden"
+                                    variants={cardVariants}
                                 >
                                     <Text>0{project.id}</Text>
                                     <Box position="relative" w="100%" pt="56.25%">
                                         <Image
-                                        src={project.image}
-                                        objectFit="cover"
-                                        position="absolute"
-                                        top={0}
-                                        left={0}
-                                        width="100%"
-                                        height="100%"
-                                        alt={project.title}
+                                            src={project.image}
+                                            objectFit="cover"
+                                            position="absolute"
+                                            top={0}
+                                            left={0}
+                                            width="100%"
+                                            height="100%"
+                                            alt={project.title}
                                         />
                                     </Box>
                                     <Box marginTop={"10px"}>
@@ -118,7 +163,7 @@ function Projects () {
                                 </MotionFlex>
                             ))}
                         </HStack>
-                    </Box>
+                    </MotionBox>
                 </Flex>
 
                 <AnimatePresence>
