@@ -1,8 +1,8 @@
 import { Container, Text, Flex, HStack, Image, Box, Grid, GridItem, Link} from "@chakra-ui/react";
-import project01 from '../assets/images/tickest-image.png';
-import project02 from '../assets/images/apotheke-image.png';
-import project03 from '../assets/images/webdesign-image.png';
-import project04 from '../assets/images/xchangeit-image.png';
+import project01 from '../assets/images/tickest.png';
+import project02 from '../assets/images/apotheke.png';
+import project03 from '../assets/images/web-design.png';
+import project04 from '../assets/images/xchangeit.png';
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
@@ -114,7 +114,7 @@ function Projects () {
                         w="100%" 
                         px="10%" 
                         mt="100px" 
-                        h="50%"
+                        h="70%"
                         variants={containerVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -136,8 +136,8 @@ function Projects () {
                                     whileHover={{ scale: 1.03 }}
                                     transition={{ layout: { duration: 1, type: "spring" } }}
                                     cursor="pointer"
-                                    w={index === 0 ? "450px" : "350px"}
-                                    h={index === 0 ? "450px" : "350px"}
+                                    w={index === 0 ? "80%" : "20%"}
+                                    h={index === 0 ? "100%" : "100%"}
                                     zIndex={index === 0 ? 1 : 0}
                                     boxShadow={index === 0 ? "lg" : "none"}
                                     overflow="hidden"
@@ -189,8 +189,8 @@ function Projects () {
                         gap={6}
                     >
                         <Box w={"95%"} h={"90%"} bg={"black"}>
-                            <Grid templateColumns="repeat(10, 1fr)" gap="1"  h={"full"}>
-                                <GridItem colSpan={4} >
+                            <Grid templateColumns="repeat(2, 1fr)" gap="1"  h={"full"}>
+                                <GridItem colSpan={1} >
                                     <Flex h={"full"} justify={"center"} align={"center"}>
                                         <Image
                                             src={activeProject.image}
@@ -201,7 +201,7 @@ function Projects () {
                                         />
                                     </Flex>
                                 </GridItem>
-                                <GridItem colSpan={6}>
+                                <GridItem colSpan={1}>
                                     <Flex justify={"center"} align={"center"} h={"full"}>
                                         <Flex direction={"column"} w={"95%"} h={"95%"}>
                                             <Flex justify={"end"}>
