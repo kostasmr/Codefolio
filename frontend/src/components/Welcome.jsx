@@ -13,7 +13,7 @@ import ScrapbookAnimation from '../tools/ScrapbookAnimation';
 const textPositions = [
     { top: "0%", x: -100, rotate: -20 },
     { top: "13%", x: -40, rotate: -15 },
-    { top: "21%", x: 0, rotate: 0 },
+    { top: { base: "18%","2xl":" 21%"}, x: 0, rotate: 0 },
 ];
 
 const box1Positions = [
