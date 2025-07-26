@@ -10,24 +10,25 @@ const MotionImage = motion(Image);
 function AboutMe () {
     return (
         <>
-            <Container id="about" maxW={{ base: "90%", "2xl": "80%" }} h={"100vh"}>
+            <Container id="about" maxW={{ sm: "90%", lg: "80%" }} h={{ sm: "40vh", tablet:"50vh", desktop:"100vh", lg:"100vh"}}>
                 <MotionFlex
                     justify="space-between"
                     align="center"
-                    paddingTop="200px"
+                    paddingTop={{ sm: "100px", tablet:"150px", desktop:"180px", lg:"200px"}}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                     viewport={{ once: true }}
                 >
-                    <Text fontSize="26px">About Me</Text>
-                    <Text>/01</Text>
+                    <Text  textStyle="sh">About Me</Text>
+                    <Text  textStyle="t">/01</Text>
                 </MotionFlex>
 
                 <MotionText
-                    fontSize="40px"
-                    fontWeight="bold"
-                    marginTop="50px"
+                    textStyle="h"
+                    textAlign={{sm: "center", tablet: "start"}}
+                    marginTop={{ sm: "40px", tablet:"30px", desktop:"50px"}}
+                    w="100%"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
@@ -39,7 +40,9 @@ function AboutMe () {
                 <MotionFlex
                     h="fit-content"
                     justify="center"
-                    marginTop="54px"
+                    align={{sm: "center", tablet: "start"}}
+                    direction={{sm: "column",tablet: "row"}}
+                    marginTop={{ sm: "15px", tablet:"35px", desktop:"55px", lg:"55px"}}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.4 }}
@@ -49,8 +52,8 @@ function AboutMe () {
                         src={gradientImg}
                         alt="Gradient Image"
                         objectFit="cover"
-                        width="350px"
-                        height="200px"
+                        w={{ sm: "180px", tablet:"250px", desktop:"350px"}}
+                        h={{ sm: "100px", tablet:"150px", desktop:"200px"}}
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, delay: 0.5 }}
@@ -58,8 +61,11 @@ function AboutMe () {
                     />
 
                     <MotionText
-                        width="30%"
-                        marginLeft="50px"
+                        textStyle="t"
+                        textAlign={{sm: "center", tablet: "start"}}
+                        w={{ sm: "84%", tablet:"40%", desktop:"30%"}}
+                        ml={{ sm: "0", tablet:"30px", desktop:"50px"}}
+                        mt={{ sm: "15px", tablet: "0"}}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.6 }}
