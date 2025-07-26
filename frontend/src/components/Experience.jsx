@@ -10,11 +10,12 @@ const MotionText = motion(Text);
 function Experience () {
     return (
         <>
-            <Container id='experience' maxW="100%">
+            <Container id='experience' maxW="100%" h={{ sm: "40vh", tablet:"50vh", desktop:"100vh", lg:"100vh"}}>
                 <Grid templateRows="repeat(5, 1fr)" gap="1" h="full">
                     <GridItem rowSpan={1} position="relative">
                         <Flex justify="center">
                             <MotionText
+                                textStyle="t"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1 }}
@@ -26,7 +27,7 @@ function Experience () {
 
                         <Flex h="full" justify="center" align="center" position="absolute" top="0" left="0" right="0" bottom="0">
                             <MotionText
-                                fontSize="26px"
+                                textStyle="sh"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 1, delay: 0.2 }}
@@ -58,8 +59,7 @@ function Experience () {
                             />
                         </motion.div>
                     </GridItem>
-                    <GridItem rowSpan={1} position="relative">
-
+                    <GridItem rowSpan={{sm: 0,lg: 1}} position="relative">
                     </GridItem>
                 </Grid>
             </Container>
