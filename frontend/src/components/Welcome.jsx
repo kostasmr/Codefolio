@@ -13,14 +13,14 @@ import ScrapbookAnimation from '../tools/ScrapbookAnimation';
 const textPositions = [
     { top: "0%", x: -100, rotate: -20 },
     { top: "13%", x: -40, rotate: -15 },
-    { top: { base: "18%","2xl":" 21%"}, x: 0, rotate: 0 },
+    { top: {sm: "calc(50% - 100px)", tablet: "calc(50% - 190px)",desktop: "calc(50% - 200px)",lg: "calc(50% - 260px)"}, x: 0, rotate: 0 },
 ];
 
 const box1Positions = [
     { top: "95%", left: "60%", rotate: 30 },
     { top: "60%", left: "53%", rotate: 3 },
     { top: "45%", left: "58%", rotate: -10 },
-    { top: "31%", left: "calc(50% - 45px)", x: 0, rotate: 4 },
+    { top: {sm: "calc(50% - 70px)", tablet: "calc(50% - 130px)",lg: "calc(50% - 180px)"}, left: {sm: "calc(50% - 20px)", tablet: "calc(50% - 40px)",lg: "calc(50% - 45px)"}, x: 0, rotate: 4 },
 ];
 
 const box2Positions = [
@@ -28,7 +28,7 @@ const box2Positions = [
     { top: "90%", left: "25%", rotate: 10 },
     { top: "60%", left: "20%", rotate: -20 },
     { top: "45%", left: "35%", rotate: 10 },
-    { top: "43%", left: "calc(50% - 140px)", x: 0, rotate: -2 },
+    { top: {sm: "calc(50% - 30px)", tablet: "calc(50% - 70px)",lg: "calc(50% - 70px)"}, left: {sm: "calc(50% - 60px)", tablet: "calc(50% - 120px)",lg: "calc(50% - 140px)"}, x: 0, rotate: -2 },
 ];
 
 const imagePositions = [
@@ -37,7 +37,7 @@ const imagePositions = [
   { top: "80%", x: 20, rotate: 15 },
   { top: "60%", x: -40, rotate: -5 },
   { top: "40%", x: -15, rotate: 5 },
-  { top: "33%", x: 0, rotate: 0 },
+  { top: {sm: "calc(50% - 60px)",tablet: "calc(50% - 110px)",lg: "calc(50% - 150px)"}, x: 0, rotate: 0 },
 ];
 
 function Welcome () {
@@ -62,7 +62,7 @@ function Welcome () {
 
     return (
         <>
-            <Container maxW="100%" height="100vh" padding={5} bg={"black"} position={'relative'}>
+            <Container maxW="100%" h={{ sm: "40vh", tablet:"60vh", desktop:"100vh", lg:"100vh"}} padding={{ sm: "1", tablet:"3", desktop:"5"}} bg={"black"} position={'relative'}>
                 <Image
                     src={gradientImg}
                     alt="Gradient Image"
@@ -79,29 +79,31 @@ function Welcome () {
                     direction="column"
                     justify="space-between"
                     color="white"
-                    px={10}
-                    py={6}
+                    p={{ sm: "1", tablet:"3", desktop:"5"}}
                     zIndex={1}
                 >
                     <Flex
                         justifyContent={"space-between"}
-                        alignItems={"center"}
-                        paddingInline={"40px"}
-                        paddingTop={"20px"}
+                        align={"center"}
+                        paddingInline={{sm: "10px", tablet: "25px",lg:"40px"}}
+                        paddingTop={{sm: "10px",tablet: "15px",lg:"20px"}}
+                        w={"full"}
                     > 
                         <Box as="button" onClick={toggleNav}>
-                            <Image src={menu} width={"40px"} alt="Menu Icon" />
+                            <Image src={menu} w={{sm:"25px", tablet:"40px"}} alt="Menu Icon" />
                         </Box>                
-                        <Text letterSpacing={"5px"} marginLeft={"1px"}>
+                        <Text letterSpacing={{sm: "2px", tablet: "3px",lg: "5px"}}  marginLeft={"1px"} textStyle="t">
                             Codefolio
                         </Text>
-                        <Flex gap={2}>
+                        <Flex gap={{sm:1,tablet: 2}}>
                             <Text
+                                textStyle="t"
                                 fontWeight={language === "en" ? "bold" : "normal"}
                                 cursor="pointer"
                                 onClick={() => language !== "en" && toggleLanguage()}  
                             >EN</Text>
                             <Text
+                                textStyle="t"
                                 fontWeight={language === "el" ? "bold" : "normal"}
                                 cursor="pointer"
                                 onClick={() => language !== "el" && toggleLanguage()}  
@@ -115,33 +117,34 @@ function Welcome () {
                         h={"full"}
                         position={"relative"}
                     >
-                        <ScrapbookAnimation as={Text} positions={textPositions} fontSize="45px" fontWeight="bold" letterSpacing="10px" zIndex={3}>
+                        <ScrapbookAnimation as={Text} positions={textPositions} textStyle="h" textAlign="center" letterSpacing={{sm: "3px", tablet: "5px",lg: "10px"}} zIndex={3}>
                             {t["software"]} <br /> {t["engineer"]}
                         </ScrapbookAnimation>
 
-                        <ScrapbookAnimation as={Box} positions={box1Positions} w="190px" h="220px" bg="#97B9B2" zIndex={1} />
+                        <ScrapbookAnimation as={Box} positions={box1Positions} w={{sm: "80px",tablet:"160px", lg:"190px"}} h={{sm: "100px",tablet:"200px", lg:"220px"}} bg="#97B9B2" zIndex={1} />
 
-                        <ScrapbookAnimation as={Box} positions={box2Positions} w="190px" h="220px" bg="#132021" zIndex={1} />
+                        <ScrapbookAnimation as={Box} positions={box2Positions} w={{sm: "80px",tablet:"160px", lg:"190px"}} h={{sm: "100px",tablet:"200px", lg:"220px"}} bg="#132021" zIndex={1} />
 
                         <ScrapbookAnimation
                             as={Image}
                             positions={imagePositions}
                             src={profileImg}
-                            width="240px"
-                            height="280px"
+                            w={{sm: "100px",tablet:"200px", lg:"240px"}}
+                            h={{sm: "120px",tablet:"230px", lg:"280px"}}
                             objectFit="cover"
                             zIndex={2}
                         />
                     </Flex>
                     <Flex                    
-                        paddingInline={"40px"}
-                        paddingBottom={"20px"}
+                        paddingInline={{sm: "10px", tablet: "25px",lg:"40px"}}
+                        paddingBottom={{sm: "10px",tablet: "15px",lg:"20px"}}
                         justifyContent={"space-between"}
+                        align={"center"}
                     >
-                        <Text letterSpacing={"5px"} fontWeight={"bold"}>{t["name"]}</Text>
-                        <Flex gap={5} align={"center"}>
-                            <Image src={arrowDown} width={"30px"} alt="Arrow Icon"/>
-                            <Text letterSpacing={"5px"}>{t["seemywork"]}</Text>
+                        <Text letterSpacing={{sm: "2px", tablet: "3px",lg: "5px"}} textStyle="tb">{t["name"]}</Text>
+                        <Flex gap={{sm: 2,lg: 5}} align={"center"}>
+                            <Image src={arrowDown} w={{sm:"15px", tablet:"30px"}} alt="Arrow Icon"/>
+                            <Text letterSpacing={{sm: "1px", tablet: "3px",lg: "5px"}} textStyle="t">{t["seemywork"]}</Text>
                         </Flex>
                     </Flex>
                 </Flex>
