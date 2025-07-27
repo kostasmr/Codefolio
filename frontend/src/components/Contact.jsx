@@ -1,11 +1,11 @@
 import gradientImg from '../assets/images/letswork-image.png';
-import { Container, Image, Text, Flex, Link} from "@chakra-ui/react";
+import { Container, Image, Text, Flex, Link, Box} from "@chakra-ui/react";
 import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 function Contact () {
     return (
         <>
-            <Container id="contact" maxW="100%" height="100vh" padding={5} bg={"black"} position={'relative'}>
+            <Container id="contact" maxW="100%" h={{ sm: "40vh", tablet:"60vh", desktop:"100vh", lg:"100vh"}} padding={{ sm: "1", tablet:"3", desktop:"5"}} bg={"black"} position={'relative'}>
                 <Image
                     src={gradientImg}
                     alt="Gradient Image"
@@ -22,18 +22,17 @@ function Contact () {
                     direction="column"
                     justify="space-between"
                     color="white"
-                    px={10}
-                    py={6}
+                    p={{ sm: "1", tablet:"3", desktop:"5"}}
                     zIndex={1}
                 >
                     <Flex
                         justifyContent={"space-between"}
                         alignItems={"center"}
-                        paddingInline={"40px"}
-                        paddingTop={"20px"}
+                        paddingInline={{sm: "10px", tablet: "25px",lg:"40px"}}
+                        paddingTop={{sm: "10px",tablet: "15px",lg:"20px"}}
                     > 
-                        <Text fontWeight={"bold"}>Thessaloniki, Greece</Text>                
-                        <Text>+30 697 596 0090</Text>
+                        <Text textStyle="tb">Thessaloniki, Greece</Text>                
+                        <Text textStyle="t">+30 697 596 0090</Text>
                     </Flex>
 
                     <Flex 
@@ -42,27 +41,31 @@ function Contact () {
                         h={"full"}                        
                     >
                         <Text 
-                            fontSize={"40px"} 
-                            fontWeight={"bold"} 
-                            letterSpacing={"10px"} 
+                            textStyle="h"
+                            letterSpacing={{sm: "3px", tablet: "5px",lg: "10px"}}
                             align={"center"} 
                             >
                                 LETS WORK <br /> TOGETHER
                             </Text>
                     </Flex>
                     <Flex                    
-                        paddingInline={"40px"}
-                        paddingBottom={"20px"}
+                        paddingInline={{sm: "10px", tablet: "25px",lg:"40px"}}
+                        paddingBottom={{sm: "10px",tablet: "15px",lg:"20px"}}
                         justifyContent={"space-between"}
+                        align={"end"}
                     >
-                        <Text fontWeight={"bold"}>Send me a message</Text>
-                        <Text marginRight={"90px"}>kmourousidis@gmail.com</Text>
-                        <Flex gap={5}>
+                        <Text textStyle="tb">Send me a message</Text>
+                        <Text textStyle="t" marginRight={{sm: "38px",tablet: "30px",desktop: "90px"}}>kmourousidis@gmail.com</Text>
+                        <Flex gap={{sm: 2,tablet: 5}}>
                             <Link href="https://www.linkedin.com/in/konstantinos-mourousidis" isExternal _hover={{ color: "orange.400" }}>
-                                <FaLinkedin size={30} />
+                                <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "40px", lg: "50px" }}>
+                                    <FaLinkedin />
+                                </Box>
                             </Link>
                             <Link href="https://github.com/kostasmr" isExternal _hover={{ color: "orange.400" }}>
-                                <FaGithubSquare size={30} />
+                                <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "40px", lg: "50px" }}>
+                                    <FaGithubSquare />
+                                </Box>
                             </Link>
                         </Flex>
                     </Flex>
