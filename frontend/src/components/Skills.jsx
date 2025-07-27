@@ -44,29 +44,29 @@ function Skills () {
 
     return (
         <>
-            <Container id="skills" maxW="100%" height="100vh" bg={"black"}>
+            <Container id="skills" maxW="100%" h={{ sm: "40vh", tablet:"70vh", desktop:"100vh", lg:"100vh"}} bg={"black"}>
                 <MotionFlex 
                     justify={"space-between"} 
-                    paddingInline={"10%"}
+                    paddingInline={{sm: "5%", desktop: "10%"}}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                     viewport={{ once: true }}
                 >
-                        <Text>/05</Text>
-                        <Text fontSize={"26px"}>Hard Skills</Text> 
+                        <Text textStyle="t">/05</Text>
+                        <Text textStyle="sh">Hard Skills</Text> 
                 </MotionFlex>
-                <Flex paddingInline={"10%"} align={"center"} justify={"space-between"} h="full">
-                    <Flex direction={"column"} fontSize={"14px"}>
+                <Flex paddingInline={{sm: "5%", desktop: "10%"}} align={"center"} justify={"space-between"} h="full">
+                    <Flex direction={"column"}>
                         {hardSkills.map((skill, i) => (
                             <motion.div
-                            key={skill}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 0.2 * i }}
-                            viewport={{ once: true }}
+                                key={skill}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1, delay: 0.2 * i }}
+                                viewport={{ once: true }}
                             >
-                            <Text>{skill}</Text>
+                            <Text textStyle="t">{skill}</Text>
                             </motion.div>
                         ))}
                     </Flex>
@@ -74,8 +74,8 @@ function Skills () {
                         src={hardSkillsImg}
                         alt="Hard Skills Image"
                         objectFit="cover"
-                        width="400px"
-                        height="500px"
+                        w={{sm: "0", tablet: "280px",desktop: "400px"}}
+                        h={{sm: "0", tablet: "340px",desktop: "500px"}}
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, delay: 0.5 }}
@@ -83,10 +83,10 @@ function Skills () {
                     />
                 </Flex>
             </Container>
-            <Container maxW="100%" height="100vh" bg={"black"}>
+            <Container maxW="100%" h={{ sm: "40vh", tablet:"70vh", desktop:"100vh", lg:"100vh"}} bg={"black"}>
                 <MotionText 
-                    fontSize={"26px"} 
-                    marginStart={"10%"}
+                    textStyle="sh"
+                    marginStart={{sm: "5%", desktop: "10%"}}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
@@ -95,13 +95,13 @@ function Skills () {
                     Soft Skills
                 </MotionText> 
                 
-                <Grid templateColumns="repeat(2, 1fr)" gap="1" h="full" paddingInline={"10%"}>
-                    <GridItem colSpan={1} alignContent={"center"}>
+                <Grid templateColumns="repeat(2, 1fr)" gap="1" h="full" paddingInline={{sm: "5%", desktop: "10%"}}>
+                    <GridItem colSpan={{sm: 0,tablet: 1}} alignContent={"center"}>
                         <MotionImage 
                             src={softSkillsImg}
                             alt="Soft Skills Image"
                             objectFit="cover"
-                            width="100%"
+                            w={{ sm: "0",tablet: "90%",desktop: "100%"}}
                             height="auto"
                             maxW={"450px"}
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -111,17 +111,17 @@ function Skills () {
                         />
 
                     </GridItem>
-                    <GridItem colSpan={1} alignContent={"center"}>
-                        <Flex direction="column" marginStart="10px" flex={1} ref={ref}>
+                    <GridItem colSpan={{sm: 2,tablet: 1}} alignContent={"center"}>
+                        <Flex direction="column" marginStart={{sm: "0px",tablet: "10px"}} flex={1} ref={ref}>
                             {skills.map((skill, index) => (
                                 <Box key={index} marginBottom="20px">
-                                    <Flex justify="space-between" marginBottom="10px">
-                                        <Text>{skill.name}</Text>
-                                        <Text>{skill.percentage}%</Text>
+                                    <Flex justify="space-between" marginBottom={{sm:"5px",tablet: "5px",desktop: "10px"}}>
+                                        <Text textStyle="t">{skill.name}</Text>
+                                        <Text textStyle="t">{skill.percentage}%</Text>
                                     </Flex>
                                     <Box
                                         w="100%"
-                                        h="15px"
+                                        h={{sm: "8px",tablet: "10px",desktop: "15px"}}
                                         bg="teal.50"
                                         borderRadius="full"
                                         overflow="hidden"
