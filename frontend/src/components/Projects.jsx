@@ -89,16 +89,16 @@ function Projects () {
 
     return (
         <>
-            <Container id="projects" maxW="100%" height="100vh" bg={"black"}>
+            <Container id="projects" maxW="100%" h={{ sm: "40vh", tablet:"50vh", desktop:"100vh", lg:"100vh"}} bg={"black"}>
                 <Flex h="full" direction={"column"} justify={"center"}>
-                    <Flex justify={"space-between"} paddingInline={"10%"}>
+                    <Flex justify={"space-between"} paddingInline={{sm: "5%", desktop: "10%"}}>
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
                             viewport={{ once: true }}
                         >
-                            <Text fontSize="26px">Projects</Text>
+                            <Text textStyle="sh">Projects</Text>
                         </motion.div>
                         
                         <motion.div
@@ -107,20 +107,20 @@ function Projects () {
                             transition={{ duration: 1 }}
                             viewport={{ once: true }}
                         >
-                            <Text>/04</Text>
+                            <Text textStyle="t">/04</Text>
                         </motion.div>
                     </Flex>
                     <MotionBox 
                         w="100%" 
-                        px="10%" 
-                        mt="100px" 
+                        px={{sm: "5%", desktop: "10%"}} 
+                        mt={{sm: "50", desktop: "100px" }}
                         h="70%"
                         variants={containerVariants}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                     >
-                        <HStack spacing={6} align="start">
+                        <HStack spacing={{ sm: 1, tablet: 3, desktop: 6}} align="start">
                             {projects.map((project, index) => (
                                 <MotionFlex
                                     key={project.id}
@@ -143,7 +143,7 @@ function Projects () {
                                     overflow="hidden"
                                     variants={cardVariants}
                                 >
-                                    <Text>0{project.id}</Text>
+                                    <Text textStyle="t">0{project.id}</Text>
                                     <Box position="relative" w="100%" pt="56.25%">
                                         <Image
                                             src={project.image}
@@ -156,9 +156,9 @@ function Projects () {
                                             alt={project.title}
                                         />
                                     </Box>
-                                    <Box marginTop={"10px"}>
-                                        <Text fontSize={index === 0 ? "22px" : "16px"}>{project.title}</Text>
-                                        <Text fontSize={index === 0 ? "16px" : "12px"} color="#ffffff50">{project.subtitle}</Text>
+                                    <Box marginTop={{ sm: "3px",tablet: "5px",desktop:"10px"}}>
+                                        <Text fontSize={index === 0 ? {sm: "10px",tablet: "14px", desktop: "20px",lg: "22px"} : {sm: "8px",tablet: "10px", desktop: "10px",lg: "20px"}}>{project.title}</Text>
+                                        <Text fontSize={index === 0 ? {sm: "8px",tablet: "10px", desktop: "14px",lg: "16px"} : {sm: "6px",tablet: "8px", desktop: "12px",lg: "14px"}} color="#ffffff50">{project.subtitle}</Text>
                                     </Box>
                                 </MotionFlex>
                             ))}
@@ -176,9 +176,9 @@ function Projects () {
                         position="fixed"
                         top={0}
                         left={0}
-                        width="100vw"
-                        height="100vh"
-                        padding={5}
+                        w="100vw"
+                        h="100vh"
+                        padding={{sm: 2,tablet : 5}}
                         bg="#1e1e1eff"
                         color="white"
                         zIndex={2000}
@@ -188,8 +188,8 @@ function Projects () {
                         justifyContent="center"
                         gap={6}
                     >
-                        <Box w={"95%"} h={"90%"} bg={"black"}>
-                            <Grid templateColumns="repeat(2, 1fr)" gap="1"  h={"full"}>
+                        <Box w={"95%"} h={{sm: "70%",tablet: "90%"}}bg={"black"}>
+                            <Grid templateColumns={{ tablet: "1fr", desktop: "repeat(2, 1fr)" }} gap={{sm: "0",desktop: "1"}}  h={"full"}>
                                 <GridItem colSpan={1} >
                                     <Flex h={"full"} justify={"center"} align={"center"}>
                                         <Image
@@ -207,22 +207,21 @@ function Projects () {
                                             <Flex justify={"end"}>
                                                 <IoClose cursor="pointer" onClick={() => setActiveProject(null)} size={"30px"}/>
                                             </Flex>
-                                            
-                                            <Text fontWeight={"bold"} fontSize={"45px"}>{activeProject.title}</Text>
-                                            <Text mt={"10px"} fontSize={"45px"}>{activeProject.subtitle}</Text>
-                                            <Text mt={"40px"} w={"80%"} fontSize={"20px"} letterSpacing={"3%"}>{activeProject.about}</Text>
-                                            <Flex mt={"40px"} gap={"50px"}>
+                                            <Text textStyle="h">{activeProject.title}</Text>
+                                            <Text mt={{sm: "5px",desktop: "5px",lg: "10px"}} textStyle="h2">{activeProject.subtitle}</Text>
+                                            <Text mt={{sm: "10px",desktop: "30px",lg: "40px"}} w={"80%"} textStyle="t" letterSpacing={"3%"}>{activeProject.about}</Text>
+                                            <Flex mt={{sm: "20px",desktop: "30px",lg: "40px"}} gap={{sm: "10px",tablet: "20px",desktop: "30px",lg :"50px"}}>
                                                 {activeProject.stack?.map((stack, idx) => (
                                                     <Flex as="a" key={idx} target="_blank" href={stack.link} direction={"column"} align={"center"} justify={"center"}  cursor={"pointer"} role="group">
-                                                        <Box fontSize="80px" color={"#575757ff"} _groupHover={{ color: activeProject?.color || "white" }}>
+                                                        <Box fontSize={{sm: "25px",tablet: "40px",desktop: "60px",lg :"80px"}} color={"#575757ff"} _groupHover={{ color: activeProject?.color || "white" }}>
                                                             {takeStackIcon(stack.tech)}
                                                         </Box>
-                                                        <Text mt={"10px"} color={"#575757ff"} _groupHover={{ color: activeProject?.color || "white"}}>{stack.tech}</Text>
+                                                        <Text textStyle="t" mt={"10px"} color={"#575757ff"} _groupHover={{ color: activeProject?.color || "white"}}>{stack.tech}</Text>
                                                     </Flex>
                                                 ))}
                                             </Flex>
                                             <Flex align={"end"} h={"full"} justify={"space-between"}>
-                                                <Text>project 0{activeProject.id}</Text>
+                                                <Text textStyle="t">project 0{activeProject.id}</Text>
                                                 {activeProject.code && (
                                                 <Link 
                                                     href={activeProject.code}
@@ -234,8 +233,8 @@ function Projects () {
                                                     transition="all 0.3s ease"
                                                     _hover={{ transform: "translateY(-4px)"}}
                                                 >
-                                                    <Text as="span">code</Text>
-                                                    <Box as={FiArrowUpRight} fontSize="20px"/>
+                                                    <Text as="span" textStyle="t">code</Text>
+                                                    <Box as={FiArrowUpRight} fontSize={{sm: "12px", tablet: "15px",desktop: "20px"}}/>
                                                 </Link>
                                                 )}
                                                 {activeProject.demo && (
@@ -249,8 +248,8 @@ function Projects () {
                                                     transition="all 0.3s ease"
                                                     _hover={{ transform: "translateY(-4px)"}}
                                                 >
-                                                    <Text as="span">demo</Text>
-                                                    <Box as={FiArrowUpRight} fontSize="20px"/>
+                                                    <Text as="span" textStyle="t">demo</Text>
+                                                    <Box as={FiArrowUpRight} fontSize={{sm: "12px", tablet: "15px",desktop: "20px"}}/>
                                                 </Link>
                                                 )}
                                             </Flex>
