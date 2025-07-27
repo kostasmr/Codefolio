@@ -1,6 +1,6 @@
 import gradientImg from '../assets/images/experience-image.png'
 import { Container, Text, Grid, GridItem, Flex} from "@chakra-ui/react";
-import JobCard from './JobCard';
+import JobCard from '../tools/JobCard';
 import { motion } from "framer-motion";
 
 
