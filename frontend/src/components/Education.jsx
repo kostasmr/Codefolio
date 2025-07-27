@@ -9,7 +9,7 @@ const MotionImage = motion(Image);
 function Education () {
     return (
         <>
-            <Container id="education"  h={{ sm: "40vh", tablet:"60vh", lg:"100vh"}} maxW={{sm: "95%",lg: "90%"}} ms={{sm: "5%", lg:"10%"}}>
+            <Container id="education"  h={{ sm: "40vh", tablet:"60vh", desktop:"100vh"}} maxW={{sm: "95%",lg: "90%"}} ms={{sm: "5%", lg:"10%"}}>
                 <Grid templateColumns="repeat(3, 1fr)" gap="1" h="full">
                     <GridItem colSpan={2}>
                         <Flex h={"full"} direction={"column"}>
