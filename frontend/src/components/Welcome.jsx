@@ -159,25 +159,35 @@ function Welcome () {
                         top={0}
                         left={0}
                         width="100%"
-                        height="100vh"
+                        height="40%"
                         padding={5}
-                        bg="rgba(0, 0, 0, 0.90)"
+                        bg="rgb(0,0,0,0)"
                         color="white"
                         zIndex={10}
                         display="flex"
-                        flexDirection="column"
-                        alignItems="center"
-                        justifyContent="center"
-                        gap={6}
+                        flexDirection="row"
                     >
-                        <Text as="a" href="#about" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>About Me</Text>
-                        <Text as="a" href="#education" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Education</Text>
-                        <Text as="a" href="#experience" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Experience</Text>
-                        <Text as="a" href="#projects" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Projects</Text>
-                        <Text as="a" href="#skills" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Skills</Text>
-                        <Text as="a" href="#contact" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Contact</Text>
-                        <IoClose cursor="pointer" onClick={toggleNav} size={"30px"} _hover={{ color: "teal" }}/>
+                        <Flex
+                            justifyContent={"space-between"}
+                            paddingInline={{sm: "10px", tablet: "25px",lg:"40px"}}
+                            paddingTop={{sm: "10px",tablet: "15px",lg:"20px"}}
+                            w={"full"}
+                            bg={"#101D1F"}
+                        > 
+                            <Box fontSize={{sm:"25px", tablet:"40px"}}>
+                                <IoClose cursor="pointer" onClick={toggleNav} _hover={{ color: "teal" }}/>
+                            </Box>
+                            <Flex direction={"column"}>
+                                <Text as="a" href="#about" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>About Me</Text>
+                                <Text as="a" href="#education" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Education</Text>
+                                <Text as="a" href="#experience" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Experience</Text>
+                                <Text as="a" href="#projects" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Projects</Text>
+                                <Text as="a" href="#skills" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Skills</Text>
+                                <Text as="a" href="#contact" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Contact</Text>
+                            </Flex>
+                    
 
+                        </Flex>
                     </MotionBox>
                 )}                
                 </AnimatePresence>
