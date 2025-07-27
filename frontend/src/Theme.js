@@ -24,13 +24,13 @@ const fontSizes = {
   t: {
     sm: "8px",
     tablet: "10px",
-    desktop: "18px",
+    desktop: "16px",
     lg: "20px",
   },
   ts: {
     sm: "6px",
     tablet: "8px",
-    desktop: "18px",
+    desktop: "16px",
     lg: "20px",
   },
 };
@@ -44,6 +44,10 @@ const theme = extendTheme({
   textStyles: {
     h: {
       fontWeight: "bold",
+      fontSize: fontSizes.h,
+    },
+    h2: {
+      fontWeight: "normal",
       fontSize: fontSizes.h,
     },
     sh: {
