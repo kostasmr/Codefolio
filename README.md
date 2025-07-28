@@ -6,8 +6,6 @@
 
 ## 🛠 Tech Stack
 - **Frontend**: ReactJS
-- **Backend**: Node.js
-- **Database**: MongoDB
 
 ## ✨ Features
 
@@ -16,9 +14,8 @@
 - 🔹 **Skills Overview** – A categorized list of my technical skills with progress indicators.
 - 🔹 **Interactive Features** – Small apps, data visualizations, or algorithms demonstrating my coding ability.
 - 🔹 **Contact Form** – A simple way to reach out, along with links to my GitHub, LinkedIn, and email.
-- 🔹 **Dark/Light Mode** – A modern UI feature for better accessibility and design flexibility.
-- 🔹 **Build Your Own CV** – A feature that allows users to input their details and generate a custom, downloadable resume.
+
 
 ## 📸 Screenshots
 
-Here are some snapshots of Apotheke in action:
+
