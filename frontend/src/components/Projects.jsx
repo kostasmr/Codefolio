@@ -1,6 +1,7 @@
 import { Container, Text, Flex, HStack, Image, Box, Grid, GridItem, Link} from "@chakra-ui/react";
 import project01 from '../assets/images/tickest.png';
 import project02 from '../assets/images/apotheke.png';
+import project02_2 from '../assets/images/apotheke-square.png';
 import project03 from '../assets/images/web-design.png';
 import project04 from '../assets/images/xchangeit.png';
 import { useState, useEffect } from "react";
@@ -11,18 +12,16 @@ import { SiAndroidstudio } from "react-icons/si";
 import { FaNode, FaHtml5, FaCss3Alt, FaAngular, FaReact } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
 
-
-
 const MotionFlex = motion(Flex);
 const MotionBox = motion(Box);
 
 
 
 const projectsData = [
-    { id: 1, title: "Tickest", subtitle: "Event Booking Android App", image: project01, stack: [{ tech: "Kotlin", link: "https://kotlinlang.org"}, { tech: "Android SDK", link: "https://developer.android.com/studio"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#d7265bff", code: "https://github.com/kostasmr/Frontend-Events", demo: "https://vimeo.com/1095895759/18d52248d9", about: "Tickest is a modern Android mobile application developed for seamless event booking experiences. Whether it's concerts, theater, or sports events, Tickest lets users discover, book, and manage tickets directly from their phones. Built during a bootcamp project by a team of three, we collaborated using the Scrum methodology and followed a design-first approach based on Figma mockups." },
-    { id: 2, title: "Apotheke", subtitle: "Order Management Web App", image: project02, stack: [{ tech: "Angular", link: "https://angular.dev/"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#3325ffff", code: "https://github.com/kostasmr/Apotheke", demo: "", about: "Apotheke is a web application designed to streamline order management for users and administrators. It provides a seamless experience for placing, tracking, and managing orders. Whether you're a regular user or an admin, Apotheke ensures smooth operations with an intuitive interface and other features." },
-    { id: 3, title: "Web design", subtitle: "Responsive One-Page Website", image: project03, stack: [{ tech: "HTML", link: "https://www.google.com/search?q=html"}, { tech: "CSS", link: "https://www.google.com/search?q=css"}], color: "#8f5cf6ff", code: "https://github.com/kostasmr/Web-Design-HTML-CSS", demo: "", about: "This is a responsive one-page website designed and developed based on a Figma prototype that was also designed by me. The purpose of this project is to translate a high-fidelity UI design into a clean, structured HTML & CSS implementation. It serves as both a design-to-code exercise and a responsive web design showcase." },
-    { id: 4, title: "XChangeIt", subtitle: "Currency Converter Web App", image: project04, stack: [{ tech: "React", link: "https://react.dev/"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#23b385ff", code: "https://github.com/kostasmr/XChangeIt", demo: "https://vimeo.com/1100094225", about: "XChangeIt is a modern currency converter web application that allows users to manage and convert currencies using both custom and live exchange rates. Built with full-stack technologies, this app provides a secure and responsive interface for personal currency management." },
+    { id: 1, title: "Tickest", subtitle: "Event Booking Android App", image: [project01,  project02_2], stack: [{ tech: "Kotlin", link: "https://kotlinlang.org"}, { tech: "Android SDK", link: "https://developer.android.com/studio"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#d7265bff", code: "https://github.com/kostasmr/Frontend-Events", demo: "https://vimeo.com/1095895759/18d52248d9", about: "Tickest is a modern Android mobile application developed for seamless event booking experiences. Whether it's concerts, theater, or sports events, Tickest lets users discover, book, and manage tickets directly from their phones. Built during a bootcamp project by a team of three, we collaborated using the Scrum methodology and followed a design-first approach based on Figma mockups." },
+    { id: 2, title: "Apotheke", subtitle: "Order Management Web App", image: [project02,  project02_2], stack: [{ tech: "Angular", link: "https://angular.dev/"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#1d4cdbff", code: "https://github.com/kostasmr/Apotheke", demo: "", about: "Apotheke is a web application designed to streamline order management for users and administrators. It provides a seamless experience for placing, tracking, and managing orders. Whether you're a regular user or an admin, Apotheke ensures smooth operations with an intuitive interface and other features." },
+    { id: 3, title: "Web design", subtitle: "Responsive One-Page Website", image: [project03,  project02_2], stack: [{ tech: "HTML", link: "https://www.google.com/search?q=html"}, { tech: "CSS", link: "https://www.google.com/search?q=css"}], color: "#8f5cf6ff", code: "https://github.com/kostasmr/Web-Design-HTML-CSS", demo: "", about: "This is a responsive one-page website designed and developed based on a Figma prototype that was also designed by me. The purpose of this project is to translate a high-fidelity UI design into a clean, structured HTML & CSS implementation. It serves as both a design-to-code exercise and a responsive web design showcase." },
+    { id: 4, title: "XChangeIt", subtitle: "Currency Converter Web App", image: [project04,  project02_2], stack: [{ tech: "React", link: "https://react.dev/"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#23b385ff", code: "https://github.com/kostasmr/XChangeIt", demo: "https://vimeo.com/1100094225", about: "XChangeIt is a modern currency converter web application that allows users to manage and convert currencies using both custom and live exchange rates. Built with full-stack technologies, this app provides a secure and responsive interface for personal currency management." },
 ];
 
 const containerVariants = {
@@ -44,7 +43,6 @@ const cardVariants = {
     transition: { type: "spring", stiffness: 80 },
   },
 };
-
 
 function Projects () {
 
@@ -146,7 +144,7 @@ function Projects () {
                                     <Text textStyle="t">0{project.id}</Text>
                                     <Box position="relative" w="100%" pt="56.25%">
                                         <Image
-                                            src={project.image}
+                                            src={project.image[0]}
                                             objectFit="cover"
                                             position="absolute"
                                             top={0}
@@ -188,12 +186,56 @@ function Projects () {
                         justifyContent="center"
                         gap={6}
                     >
-                        <Box w={"95%"} h={{sm: "70%",tablet: "90%"}}bg={"black"}>
-                            <Grid templateColumns={{ tablet: "1fr", desktop: "repeat(2, 1fr)" }} gap={{sm: "0",desktop: "1"}}  h={"full"}>
-                                <GridItem colSpan={1} >
-                                    <Flex h={"full"} justify={"center"} align={"center"}>
+                        <Box w={"95%"} h={{sm: "70vh",tablet: "90vh"}} bg={"black"} overflow="auto">
+                            <Grid templateColumns={{ tablet: "1fr", desktop: "repeat(2, 1fr)" }} gap={{sm: "0",desktop: "1"}}  h={"100%"}>
+                                <GridItem colSpan={1} h="100%">
+                                    <Flex h={"full"} justify={"center"} align={"center"} display={{sm: "none", desktop: "flex"}}>
+                                        <Box
+                                            position="relative"
+                                            w="95%"
+                                            h="95%"
+                                            role="group"
+                                        >
+                                            {/* Image */}
+                                            <Image
+                                                src={activeProject.image[0]}
+                                                objectFit="cover"
+                                                w="100%"
+                                                h="100%"
+                                                alt={activeProject.title}
+                                                _groupHover={{ filter: "blur(3px)" }}
+                                            />
+
+                                            {/* Centered Button on hover */}
+                                            <Flex
+                                                position="absolute"
+                                                top="0"
+                                                left="0"
+                                                w="100%"
+                                                h="100%"
+                                                justify="center"
+                                                align="center"
+                                                opacity="0"
+                                                _groupHover={{ opacity: 1 }}
+                                                bg="rgba(0, 0, 0, 0.3)"
+                                            >
+                                                <Box
+                                                    px="20px"
+                                                    py="10px"
+                                                    border="1px solid white"
+                                                    backdropFilter="blur(6px)"
+                                                    color="white"
+                                                    cursor="pointer"
+                                                    _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
+                                                >
+                                                    Gallery
+                                                </Box>
+                                            </Flex>
+                                        </Box>
+                                    </Flex>
+                                    <Flex h={"full"} justify={"center"} align={"center"} display={{sm: "flex", desktop: "none"}}>
                                         <Image
-                                            src={activeProject.image}
+                                            src={activeProject.image[0]}
                                             objectFit="cover"
                                             w="95%"
                                             h="95%"
@@ -201,7 +243,7 @@ function Projects () {
                                         />
                                     </Flex>
                                 </GridItem>
-                                <GridItem colSpan={1}>
+                                <GridItem colSpan={1} h="100%">
                                     <Flex justify={"center"} align={"center"} h={"full"}>
                                         <Flex direction={"column"} w={"95%"} h={"95%"}>
                                             <Flex justify={"end"}>
@@ -223,34 +265,34 @@ function Projects () {
                                             <Flex align={"end"} h={"full"} justify={"space-between"}>
                                                 <Text textStyle="t">project 0{activeProject.id}</Text>
                                                 {activeProject.code && (
-                                                <Link 
-                                                    href={activeProject.code}
-                                                    isExternal 
-                                                    textDecor="underline"
-                                                    display="inline-flex" 
-                                                    alignItems="end" 
-                                                    gap="4px"
-                                                    transition="all 0.3s ease"
-                                                    _hover={{ transform: "translateY(-4px)"}}
-                                                >
-                                                    <Text as="span" textStyle="t">code</Text>
-                                                    <Box as={FiArrowUpRight} fontSize={{sm: "12px", tablet: "15px",desktop: "20px"}}/>
-                                                </Link>
+                                                    <Link 
+                                                        href={activeProject.code}
+                                                        isExternal 
+                                                        textDecor="underline"
+                                                        display="inline-flex" 
+                                                        alignItems="end" 
+                                                        gap="4px"
+                                                        transition="all 0.3s ease"
+                                                        _hover={{ transform: "translateY(-4px)"}}
+                                                    >
+                                                        <Text as="span" textStyle="t">code</Text>
+                                                        <Box as={FiArrowUpRight} fontSize={{sm: "12px", tablet: "15px",desktop: "20px"}}/>
+                                                    </Link>
                                                 )}
                                                 {activeProject.demo && (
-                                                <Link 
-                                                    href={activeProject.demo}
-                                                    isExternal 
-                                                    textDecor="underline"
-                                                    display="inline-flex" 
-                                                    alignItems="end" 
-                                                    gap="4px"
-                                                    transition="all 0.3s ease"
-                                                    _hover={{ transform: "translateY(-4px)"}}
-                                                >
-                                                    <Text as="span" textStyle="t">demo</Text>
-                                                    <Box as={FiArrowUpRight} fontSize={{sm: "12px", tablet: "15px",desktop: "20px"}}/>
-                                                </Link>
+                                                    <Link 
+                                                        href={activeProject.demo}
+                                                        isExternal 
+                                                        textDecor="underline"
+                                                        display="inline-flex" 
+                                                        alignItems="end" 
+                                                        gap="4px"
+                                                        transition="all 0.3s ease"
+                                                        _hover={{ transform: "translateY(-4px)"}}
+                                                    >
+                                                        <Text as="span" textStyle="t">demo</Text>
+                                                        <Box as={FiArrowUpRight} fontSize={{sm: "12px", tablet: "15px",desktop: "20px"}}/>
+                                                    </Link>
                                                 )}
                                             </Flex>
                                         </Flex>
