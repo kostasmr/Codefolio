@@ -159,7 +159,7 @@ function Welcome () {
                         top={0}
                         left={0}
                         width="100%"
-                        height="40%"
+                        height="auto"
                         padding={5}
                         bg="rgb(0,0,0,0)"
                         color="white"
@@ -170,23 +170,33 @@ function Welcome () {
                         <Flex
                             justifyContent={"space-between"}
                             paddingInline={{sm: "10px", tablet: "25px",lg:"40px"}}
-                            paddingTop={{sm: "10px",tablet: "15px",lg:"20px"}}
+                            paddingY={{sm: "10px",tablet: "15px",lg:"20px"}}
                             w={"full"}
                             bg={"#101D1F"}
                         > 
                             <Box fontSize={{sm:"25px", tablet:"40px"}}>
                                 <IoClose cursor="pointer" onClick={toggleNav} _hover={{ color: "teal" }}/>
                             </Box>
-                            <Flex direction={"column"}>
-                                <Text as="a" href="#about" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>About Me</Text>
-                                <Text as="a" href="#education" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Education</Text>
-                                <Text as="a" href="#experience" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Experience</Text>
-                                <Text as="a" href="#projects" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Projects</Text>
-                                <Text as="a" href="#skills" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Skills</Text>
-                                <Text as="a" href="#contact" fontSize="2xl" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Contact</Text>
+                            <Flex gap={"200px"} mt="10px">
+                                <Text textStyle="t">Codefolio</Text>
+                                <Flex direction={"column"} gap={5} textStyle="t">
+                                    <Text as="a" href="#about" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>About Me</Text>
+                                    <Text as="a" href="#education" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Education</Text>
+                                    <Text as="a" href="#experience" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Experience</Text>
+                                    <Text as="a" href="#projects" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Projects</Text>
+                                    <Text as="a" href="#skills" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Skills</Text>
+                                    <Text as="a" href="#contact" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Contact</Text>
+                                </Flex>
                             </Flex>
-                    
-
+                            <Flex gap={"200px"} mt="10px">
+                                <Text textStyle="t">Let`s work together</Text>
+                                <Flex direction={"column"} textStyle="t" gap={5}>
+                                    <Text>+30 697 596 0090</Text>
+                                    <Text>kmourousidis@gmail.com</Text>
+                                    <Text>github</Text>
+                                    <Text>linkedin</Text>
+                                </Flex>
+                            </Flex>
                         </Flex>
                     </MotionBox>
                 )}                
