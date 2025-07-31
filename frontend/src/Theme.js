@@ -30,8 +30,8 @@ const fontSizes = {
   ts: {
     sm: "6px",
     tablet: "8px",
-    desktop: "16px",
-    lg: "20px",
+    desktop: "14px",
+    lg: "18px",
   },
 };
 
