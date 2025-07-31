@@ -49,7 +49,6 @@ function Projects () {
     const [projects, setProjects] = useState(projectsData);
     const [activeProject, setActiveProject] = useState(null);
 
-
     const rotateProjects = (index) => {
         const newOrder = [...projects.slice(index), ...projects.slice(0, index)];
         setProjects(newOrder);
@@ -196,7 +195,6 @@ function Projects () {
                                             h="95%"
                                             role="group"
                                         >
-                                            {/* Image */}
                                             <Image
                                                 src={activeProject.image[0]}
                                                 objectFit="cover"
@@ -206,7 +204,6 @@ function Projects () {
                                                 _groupHover={{ filter: "blur(3px)" }}
                                             />
 
-                                            {/* Centered Button on hover */}
                                             <Flex
                                                 position="absolute"
                                                 top="0"
@@ -255,7 +252,7 @@ function Projects () {
                                             <Flex mt={{sm: "20px",desktop: "30px",lg: "40px"}} gap={{sm: "10px",tablet: "20px",desktop: "30px",lg :"50px"}}>
                                                 {activeProject.stack?.map((stack, idx) => (
                                                     <Flex as="a" key={idx} target="_blank" href={stack.link} direction={"column"} align={"center"} justify={"center"}  cursor={"pointer"} role="group">
-                                                        <Box fontSize={{sm: "25px",tablet: "40px",desktop: "60px",lg :"80px"}} color={"#575757ff"} _groupHover={{ color: activeProject?.color || "white" }}>
+                                                        <Box fontSize={{sm: "25px",tablet: "40px",desktop: "60px",lg :"70px"}} color={"#575757ff"} _groupHover={{ color: activeProject?.color || "white" }}>
                                                             {takeStackIcon(stack.tech)}
                                                         </Box>
                                                         <Text textStyle="t" mt={"10px"} color={"#575757ff"} _groupHover={{ color: activeProject?.color || "white"}}>{stack.tech}</Text>
@@ -303,6 +300,7 @@ function Projects () {
                     </MotionBox>
                 )}                
                 </AnimatePresence>
+
             </Container>
         </>
     )
