@@ -1,10 +1,9 @@
 {
     "en": {
-        "profile": "Profile",
+        "aboutme": "About me",
         "education": "Education",
-        "projects": "Projects",
         "experience": "Work Experience",
-        "certifications": "Certifications",
+        "projects": "Projects",
         "skills": "Skills",
         "contacts": "Contacts",
         "name": "Konstantinos Mourousidis",
@@ -13,11 +12,10 @@
         "seemywork": "scroll down"
     },
     "el": {
-      "profile": "Προφίλ",
+      "aboutme": "Σχετικά με εμένα",
       "education": "Εκπαίδευση",
-      "projects": "Εργασίες",
       "experience": "Εμπειρία",
-      "certifications": "Πτυχία",
+      "projects": "Εργασίες",
       "skills": "Δεξιότητες",
       "contacts": "Επικοινωνία",
       "name": "Κωνσταντίνος Μουρουσίδης",
