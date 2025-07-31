@@ -22,9 +22,9 @@ const PortfolioPage = () => {
         <Experience/>
         <Box w="full" h={{sm : "200px", tablet: "200px", desktop: "300px"}} bg="black" />
         <Projects/>
-        <Box w="full" h={{sm : "100px", tablet: "200px", desktop: "0px"}} bg="black" />
+        <Box w="full" h={{sm : "100px", tablet: "200px", desktop: "200px"}} bg="black" />
         <Skills/>
-        <Box w="full" h={{sm : "200px", tablet: "100px", desktop: "0px"}} bg="black" />
+        <Box w="full" h={{sm : "200px", tablet: "100px", desktop: "200px"}} bg="black" />
         <Contact/>
         <ScrollToTopButton/>
     </>
