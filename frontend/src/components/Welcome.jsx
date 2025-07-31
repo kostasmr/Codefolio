@@ -2,11 +2,14 @@ import gradientImg from '../assets/images/gradient-image.png';
 import profileImg from '../assets/images/my-image.jpg';
 import arrowDown from '../assets/icons/arrow-down.png';
 import menu from '../assets/icons/menu.png';
-import { Container, Image, Text, Flex, Box} from "@chakra-ui/react";
+import { Container, Image, Text, Flex, Box, Link} from "@chakra-ui/react";
 import { useLanguage } from '../tools/translation/useLanguage';
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
+import { FaPhoneAlt, FaLinkedin, FaGithubSquare } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+
 import ScrapbookAnimation from '../tools/ScrapbookAnimation';
 
 
@@ -151,50 +154,69 @@ function Welcome () {
                 <AnimatePresence>
                 {showNav && (
                     <MotionBox
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4 }}
+                        initial={{ opacity: 0, y: -500 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -500 }}
+                        transition={{ duration: 0.5 }}
                         position="absolute"
                         top={0}
                         left={0}
                         width="100%"
                         height="auto"
                         padding={5}
-                        bg="rgb(0,0,0,0)"
+                        bg="rgba(0,0,0,0)"
                         color="white"
                         zIndex={10}
                         display="flex"
                         flexDirection="row"
                     >
                         <Flex
-                            justifyContent={"space-between"}
+                            justifyContent={"flex-start"}
                             paddingInline={{sm: "10px", tablet: "25px",lg:"40px"}}
                             paddingY={{sm: "10px",tablet: "15px",lg:"20px"}}
                             w={"full"}
                             bg={"#101D1F"}
+                            gap={20}
                         > 
-                            <Box fontSize={{sm:"25px", tablet:"40px"}}>
+                            <Box fontSize={{sm:"25px", tablet:"40px"}} _hover={{ color: "teal.600" }} h={"fit-content"}>
                                 <IoClose cursor="pointer" onClick={toggleNav} _hover={{ color: "teal" }}/>
                             </Box>
-                            <Flex gap={"200px"} mt="10px">
+                            <Flex gap={"100px"} py="40px" marginEnd={"auto"}>
                                 <Text textStyle="t">Codefolio</Text>
-                                <Flex direction={"column"} gap={5} textStyle="t">
-                                    <Text as="a" href="#about" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>About Me</Text>
-                                    <Text as="a" href="#education" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Education</Text>
-                                    <Text as="a" href="#experience" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Experience</Text>
-                                    <Text as="a" href="#projects" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Projects</Text>
-                                    <Text as="a" href="#skills" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Skills</Text>
-                                    <Text as="a" href="#contact" cursor="pointer" onClick={() => setShowNav(false)} _hover={ { textColor: "#97B9B2" }}>Contact</Text>
+                                <Flex direction={"column"} gap={3} textStyle="t">
+                                    <Text as="a" href="#about" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>About Me</Text>
+                                    <Text as="a" href="#education" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Education</Text>
+                                    <Text as="a" href="#experience" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Experience</Text>
+                                    <Text as="a" href="#projects" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Projects</Text>
+                                    <Text as="a" href="#skills" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Skills</Text>
+                                    <Text as="a" href="#contact" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Contact</Text>
                                 </Flex>
                             </Flex>
-                            <Flex gap={"200px"} mt="10px">
-                                <Text textStyle="t">Let`s work together</Text>
-                                <Flex direction={"column"} textStyle="t" gap={5}>
+                            <Flex direction={"column"} textStyle="ts" gap={3} py="40px">
+                                <Text mb={4}>Let`s work together</Text>
+                                <Flex align={"center"} gap={3}>
+                                    <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "20px", lg: "20px" }}>
+                                        <FaPhoneAlt />
+                                    </Box>
                                     <Text>+30 697 596 0090</Text>
+                                </Flex>
+                                <Flex align={"center"} gap={3} marginEnd={"auto"}>
+                                    <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "25px", lg: "25px" }}>
+                                        <MdEmail />
+                                    </Box>
                                     <Text>kmourousidis@gmail.com</Text>
-                                    <Text>github</Text>
-                                    <Text>linkedin</Text>
+                                </Flex>
+                                <Flex gap={{sm: 2,tablet: 5}} align={"end"} h={"full"}>
+                                    <Link href="https://www.linkedin.com/in/konstantinos-mourousidis" isExternal transition="all 0.3s ease" _hover={{ color: "teal.600", transform: "translateY(-4px)" }}>
+                                        <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "30px", lg: "30px" }}>
+                                            <FaLinkedin />
+                                        </Box>
+                                    </Link>
+                                    <Link href="https://github.com/kostasmr" isExternal transition="all 0.3s ease" _hover={{ color: "teal.600", transform: "translateY(-4px)" }}>
+                                        <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "30px", lg: "30px" }}>
+                                            <FaGithubSquare />
+                                        </Box>
+                                    </Link>
                                 </Flex>
                             </Flex>
                         </Flex>
