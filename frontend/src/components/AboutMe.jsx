@@ -1,5 +1,6 @@
 import gradientImg from '../assets/images/aboutme-image.png'
 import { Container, Flex, Text, Image} from "@chakra-ui/react";
+import { useLanguage } from '../tools/translation/useLanguage';
 import { motion } from "framer-motion";
 
 
@@ -8,6 +9,30 @@ const MotionFlex = motion(Flex);
 const MotionImage = motion(Image);
 
 function AboutMe () {
+
+    const {t, language} = useLanguage();
+
+    const sh = { en: "Building Digital Experiences That", el: "Δημιουργία ψηφιακών εμπειριών που"}
+    const sh2 = { en: "Solve Real Problems", el: "επιλύουν πραγματικά προβλήματα"}
+    const about = { en: "I am a Computer Science & Engineering graduate with a strong interest\
+                        in software development. During my studies and a web development\
+                        internship, I worked on real-world projects, gained experience with\
+                        multiple programming languages, and learned how to solve problems\
+                        effectively while working in teams. Currently, I’m focused on growing\
+                        my skills in the field of software development through continuous\
+                        learning and hands-on practice. I am looking for an opportunity in a\
+                        collaborative and modern environment where I can contribute, grow\
+                        professionally, and take on new challenges."
+                    , el: "Είμαι απόφοιτος Μηχανικών Η/Υ και Πληροφορικής με έντονο ενδιαφέρον για την ανάπτυξη λογισμικού. \
+                        Κατά τη διάρκεια των σπουδών μου και της πρακτικής άσκησης στον τομέα της ανάπτυξης ιστοσελίδων, \
+                        εργάστηκα σε πραγματικά έργα, απέκτησα εμπειρία σε πολλές γλώσσες προγραμματισμού \
+                        και έμαθα πώς να επιλύω προβλήματα αποτελεσματικά ενώ εργάζομαι σε ομάδες. \
+                        Αυτή τη στιγμή, επικεντρώνομαι στην ανάπτυξη των δεξιοτήτων μου στον τομέα της \
+                        ανάπτυξης λογισμικού μέσω της συνεχούς μάθησης και της πρακτικής εξάσκησης. \
+                        Αναζητώ μια ευκαιρία σε ένα συνεργατικό και σύγχρονο περιβάλλον όπου θα μπορώ να συνεισφέρω, \
+                        να εξελιχθώ επαγγελματικά και να αναλάβω νέες προκλήσεις."
+                    }
+
     return (
         <>
             <Container id="about" maxW={{ sm: "90%", lg: "80%" }} h={{ sm: "40vh", tablet:"50vh", desktop:"100vh", lg:"100vh"}}>
@@ -20,7 +45,7 @@ function AboutMe () {
                     transition={{ duration: 1 }}
                     viewport={{ once: true }}
                 >
-                    <Text  textStyle="sh">About Me</Text>
+                    <Text  textStyle="sh">{t["aboutme"]}</Text>
                     <Text  textStyle="t">/01</Text>
                 </MotionFlex>
 
@@ -34,7 +59,7 @@ function AboutMe () {
                     transition={{ duration: 1, delay: 0.2 }}
                     viewport={{ once: true }}
                 >
-                    Building Digital Experiences That<br />Solve Real Problems
+                    {sh[language]}<br />{sh2[language]}
                 </MotionText>
 
                 <MotionFlex
@@ -63,7 +88,7 @@ function AboutMe () {
                     <MotionText
                         textStyle="t"
                         textAlign={{sm: "center", tablet: "start"}}
-                        w={{ sm: "84%", tablet:"40%", desktop:"30%"}}
+                        w={{ sm: "84%", tablet:"40%", desktop:"40%", lg:"35%"}}
                         ml={{ sm: "0", tablet:"30px", desktop:"50px"}}
                         mt={{ sm: "15px", tablet: "0"}}
                         initial={{ opacity: 0, y: 20 }}
@@ -71,15 +96,7 @@ function AboutMe () {
                         transition={{ duration: 1, delay: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        I am a Computer Science & Engineering graduate with a strong interest
-                        in software development. During my studies and a web development
-                        internship, I worked on real-world projects, gained experience with
-                        multiple programming languages, and learned how to solve problems
-                        effectively while working in teams. Currently, I’m focused on growing
-                        my skills in the field of software development through continuous
-                        learning and hands-on practice. I am looking for an opportunity in a
-                        collaborative and modern environment where I can contribute, grow
-                        professionally, and take on new challenges.
+                        {about[language]}
                     </MotionText>
                 </MotionFlex>
             </Container>
