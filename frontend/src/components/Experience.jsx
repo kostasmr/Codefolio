@@ -1,6 +1,7 @@
 import gradientImg from '../assets/images/experience-image.png'
 import { Container, Text, Grid, GridItem, Flex} from "@chakra-ui/react";
 import JobCard from '../tools/JobCard';
+import { useLanguage } from '../tools/translation/useLanguage';
 import { motion } from "framer-motion";
 
 
@@ -8,6 +9,23 @@ const MotionText = motion(Text);
 
 
 function Experience () {
+    
+    const {t, language } = useLanguage();    
+    
+    const job = { en: "Web Developer Intern", el: " Προγραμματιστής Ιστοσελίδων Πρακτική"}
+    const infos = { en: [
+                            "Developed an admin web application with Angular, implementing features based on client requirements.",
+                            "Built and documented RESTful APIs using Node.js, Postman, and MongoDB for data handling and integration.",
+                            "Collaborated with mobile developers to ensure API compatibility and smooth cross-platform functionality.",
+                            "Worked on additional projects, including implementing bilingual support (English/Greek) for web applications.",
+                        ], 
+                    el: [
+                            "Ανάπτυξη διαδικτυακής εφαρμογής διαχείρισης με Angular, υλοποιώντας λειτουργίες βάσει των απαιτήσεων του πελάτη.",
+                            "Δημιουργία και τεκμηρίωση RESTful APIs χρησιμοποιώντας Node.js, Postman και MongoDB για τη διαχείριση και την ενσωμάτωση δεδομένων.",
+                            "Σε συνεργασία με προγραμματιστές κινητών συσκευών, επιβεβαιώσαμε τη συμβατότητα των API και την ομαλή λειτουργία σε όλες τις πλατφόρμες.",
+                            "Εργάστηκα σε επιπλέον έργα, συμπεριλαμβανομένης της υλοποίησης δίγλωσσης υποστήριξης (αγγλικά/ελληνικά) για διαδικτυακές εφαρμογές.",
+                        ]}
+
     return (
         <>
             <Container id='experience' maxW="100%" h={{ sm: "40vh", tablet:"50vh", desktop:"100vh", lg:"100vh"}}>
@@ -33,7 +51,7 @@ function Experience () {
                                 transition={{ duration: 1, delay: 0.2 }}
                                 viewport={{ once: true }}
                             >
-                            Experience
+                                {t["experience"]}
                             </MotionText>
                         </Flex>
                     </GridItem>
@@ -46,15 +64,10 @@ function Experience () {
                         >
                             <JobCard
                                 image={gradientImg}
-                                title="Web Developer Intern"
+                                title={job[language]}
                                 company="SoftWeb Adaptive I.T. Solutions"
                                 duration="07/2023 - 09/2023"
-                                responsibilities={[
-                                    "Developed an admin web application with Angular, implementing features based on client requirements.",
-                                    "Built and documented RESTful APIs using Node.js, Postman, and MongoDB for data handling and integration.",
-                                    "Collaborated with mobile developers to ensure API compatibility and smooth cross-platform functionality.",
-                                    "Worked on additional projects, including implementing bilingual support (English/Greek) for web applications.",
-                                ]}
+                                responsibilities={infos[language]}
                                 tools={'Angular / Node.js / MongoDB / Postman'}
                             />
                         </motion.div>
