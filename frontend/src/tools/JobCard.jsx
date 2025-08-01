@@ -3,11 +3,14 @@ import { Box, Flex, Image, Text, Grid, GridItem } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { TbHandClick } from "react-icons/tb";
-
+import { useLanguage } from '../tools/translation/useLanguage';
 
 
 const JobCard = ({ image, title, company, duration, responsibilities, tools }) => {
     const [showDetails, setShowDetails] = useState(false);
+    const { language } = useLanguage();  
+    
+    const hover = { en: "hover", el: "περάστε το ποντίκι"}
 
     return (
         <Flex justify="space-between" h="100%" direction={{sm: "column", tablet:"row"}} align={{sm: "center", tablet: "start"}}> 
@@ -28,7 +31,7 @@ const JobCard = ({ image, title, company, duration, responsibilities, tools }) =
                         <Grid templateColumns="repeat(10, 1fr)" gap="1"  h={"full"}>
                             <GridItem colSpan={4} ms={{sm: "5%",lg: "10%"}} mt={{sm: "10%",lg :"15%"}}>
                                     <Text textStyle="sh">{title}</Text>
-                                    <Text mt={{sm: "10px",lg: "20px"}} textStyle="t">at {company}</Text>
+                                    <Text mt={{sm: "10px",lg: "20px"}} textStyle="t">{company}</Text>
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <Flex gap={{sm: "5px",tablet: "10px",lg: "20px"}} direction={"column"} h={"full"} justify={"center"} w={{sm: "95%",lg: "90%"}}>
@@ -49,7 +52,7 @@ const JobCard = ({ image, title, company, duration, responsibilities, tools }) =
                 color="white" 
             >
                 <Flex justify={"flex-end"} align={"center"} marginBottom={{sm: "5px",lg: "10px"}} mr="20px" display={{sm: "none", tablet: "flex"}}>
-                    <Text marginEnd={"20px"} letterSpacing={"5px"} color={"#D9D9D940"} textStyle="t">hover</Text>
+                    <Text marginEnd={"20px"} letterSpacing={"5px"} color={"#D9D9D940"} textStyle="t">{hover[language]}</Text>
                     <TbHandClick color={"#D9D9D960"}/>             
                 </Flex>
                 
