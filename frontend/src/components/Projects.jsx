@@ -1,9 +1,12 @@
 import { Container, Text, Flex, HStack, Image, Box, Grid, GridItem, Link} from "@chakra-ui/react";
-import project01 from '../assets/images/tickest.png';
-import project02 from '../assets/images/apotheke.png';
-import project02_2 from '../assets/images/apotheke-square.png';
-import project03 from '../assets/images/web-design.png';
-import project04 from '../assets/images/xchangeit.png';
+import tickest from '../assets/images/tickest.png';
+import tickest2 from '../assets/images/tickest-square.png';
+import apotheke from '../assets/images/apotheke.png';
+import apotheke2 from '../assets/images/apotheke-square.png';
+import webdesign from '../assets/images/web-design.png';
+import webdesign2 from '../assets/images/webdesign-square.png';
+import xchangeit from '../assets/images/xchangeit.png';
+import xchangeit2 from '../assets/images/xchangeit-square.png';
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
@@ -11,6 +14,8 @@ import { TbBrandKotlin } from "react-icons/tb";
 import { SiAndroidstudio } from "react-icons/si";
 import { FaNode, FaHtml5, FaCss3Alt, FaAngular, FaReact } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useLanguage } from '../tools/translation/useLanguage';
+
 
 const MotionFlex = motion(Flex);
 const MotionBox = motion(Box);
@@ -18,10 +23,84 @@ const MotionBox = motion(Box);
 
 
 const projectsData = [
-    { id: 1, title: "Tickest", subtitle: "Event Booking Android App", image: [project01,  project02_2], stack: [{ tech: "Kotlin", link: "https://kotlinlang.org"}, { tech: "Android SDK", link: "https://developer.android.com/studio"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#d7265bff", code: "https://github.com/kostasmr/Frontend-Events", demo: "https://vimeo.com/1095895759/18d52248d9", about: "Tickest is a modern Android mobile application developed for seamless event booking experiences. Whether it's concerts, theater, or sports events, Tickest lets users discover, book, and manage tickets directly from their phones. Built during a bootcamp project by a team of three, we collaborated using the Scrum methodology and followed a design-first approach based on Figma mockups." },
-    { id: 2, title: "Apotheke", subtitle: "Order Management Web App", image: [project02,  project02_2], stack: [{ tech: "Angular", link: "https://angular.dev/"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#1d4cdbff", code: "https://github.com/kostasmr/Apotheke", demo: "", about: "Apotheke is a web application designed to streamline order management for users and administrators. It provides a seamless experience for placing, tracking, and managing orders. Whether you're a regular user or an admin, Apotheke ensures smooth operations with an intuitive interface and other features." },
-    { id: 3, title: "Web design", subtitle: "Responsive One-Page Website", image: [project03,  project02_2], stack: [{ tech: "HTML", link: "https://www.google.com/search?q=html"}, { tech: "CSS", link: "https://www.google.com/search?q=css"}], color: "#8f5cf6ff", code: "https://github.com/kostasmr/Web-Design-HTML-CSS", demo: "", about: "This is a responsive one-page website designed and developed based on a Figma prototype that was also designed by me. The purpose of this project is to translate a high-fidelity UI design into a clean, structured HTML & CSS implementation. It serves as both a design-to-code exercise and a responsive web design showcase." },
-    { id: 4, title: "XChangeIt", subtitle: "Currency Converter Web App", image: [project04,  project02_2], stack: [{ tech: "React", link: "https://react.dev/"}, { tech: "Node.js", link: "https://nodejs.org/en"}], color: "#23b385ff", code: "https://github.com/kostasmr/XChangeIt", demo: "https://vimeo.com/1100094225", about: "XChangeIt is a modern currency converter web application that allows users to manage and convert currencies using both custom and live exchange rates. Built with full-stack technologies, this app provides a secure and responsive interface for personal currency management." },
+    {   
+        id: 1, 
+        title: "XChangeIt", 
+        subtitle: {en: "Currency Converter Web App", el: "Διαδικτυακή Εφαρμογή Μετατροπής Νομισμάτων"}, 
+        image: [xchangeit,  xchangeit2], 
+        stack: [{ tech: "React", link: "https://react.dev/"}, { tech: "Node.js", link: "https://nodejs.org/en"}], 
+        color: "#23b385ff", 
+        code: "https://github.com/kostasmr/XChangeIt", 
+        demo: "https://vimeo.com/1100094225", 
+        about: { 
+            en: "XChangeIt is a modern currency converter web application that allows users to manage and convert \
+                currencies using both custom and live exchange rates. Built with full-stack technologies, this app provides \
+                a secure and responsive interface for personal currency management.",
+            el: "Το XChangeIt είναι μια σύγχρονη διαδικτυακή εφαρμογή μετατροπής νομισμάτων που επιτρέπει στους χρήστες να διαχειρίζονται και να μετατρέπουν \
+                νομίσματα χρησιμοποιώντας τόσο προσαρμοσμένες όσο και ζωντανές συναλλαγματικές ισοτιμίες. Κατασκευασμένη με τεχνολογίες full-stack, αυτή η εφαρμογή παρέχει \
+                μια ασφαλή και ανταποκρινόμενη διεπαφή για την προσωπική διαχείριση νομισμάτων." 
+        }
+    },
+    {   
+        id: 2,
+        title: "Tickest", 
+        subtitle: {en: "Event Booking Android App", el: "Android Εφαρμογή Για Κρατήσεις Εκδηλώσεων"}, 
+        image: [tickest,  tickest2], 
+        stack: [{ tech: "Kotlin", link: "https://kotlinlang.org"}, 
+                { tech: "Android SDK", link: "https://developer.android.com/studio"}, 
+                { tech: "Node.js", link: "https://nodejs.org/en"}], 
+        color: "#d7265bff", 
+        code: "https://github.com/kostasmr/Frontend-Events", 
+        demo: "https://vimeo.com/1095895759/18d52248d9",
+        about: {
+            en: "Tickest is a modern Android mobile application developed for seamless event booking experiences. \
+                Whether it's concerts, theater, or sports events, Tickest lets users discover, book, and manage tickets \
+                directly from their phones. Built during a bootcamp project by a team of three, we collaborated using \
+                the Scrum methodology and followed a design-first approach based on Figma mockups.",
+            el: "Το Tickest είναι μια σύγχρονη εφαρμογή για κινητά Android που έχει αναπτυχθεί για να προσφέρει μια απρόσκοπτη εμπειρία κράτησης εισιτηρίων για εκδηλώσεις. \
+                Είτε πρόκειται για συναυλίες, θεατρικές παραστάσεις ή αθλητικές εκδηλώσεις, το Tickest επιτρέπει στους χρήστες να ανακαλύπτουν, να κρατούν και να διαχειρίζονται εισιτήρια \
+                απευθείας από τα κινητά τους τηλέφωνα. Δημιουργήθηκε κατά τη διάρκεια ενός bootcamp project από μια ομάδα τριών ατόμων, συνεργαστήκαμε χρησιμοποιώντας \
+                τη μεθοδολογία Scrum και ακολουθήσαμε μια προσέγγιση που έδινε προτεραιότητα στο σχεδιασμό με βάση τα mockups του Figma."    
+        }
+    },
+    { 
+        id: 3, 
+        title: "Web design", 
+        subtitle: {en: "Responsive One-Page Website", el: "Ιστότοπος Μίας Σελίδας"}, 
+        image: [webdesign,  webdesign2], 
+        stack: [{ tech: "HTML", link: "https://www.google.com/search?q=html"}, 
+                { tech: "CSS", link: "https://www.google.com/search?q=css"}], 
+        color: "#8f5cf6ff", 
+        code: "https://github.com/kostasmr/Web-Design-HTML-CSS", 
+        demo: "", 
+        about: {
+            en: "This is a responsive one-page website designed and developed based on a Figma prototype that \
+                was also designed by me. The purpose of this project is to translate a high-fidelity UI design into a clean, \
+                structured HTML & CSS implementation. It serves as both a design-to-code exercise and a responsive web design showcase.",
+            el: "Πρόκειται για έναν ανταποκρινόμενο ιστότοπο μίας σελίδας που σχεδιάστηκε και αναπτύχθηκε με βάση ένα πρωτότυπο Figma που \
+                σχεδιάστηκε επίσης από εμένα. Ο σκοπός αυτού του έργου είναι να μεταφράσει ένα σχεδιασμό UI υψηλής πιστότητας σε μια καθαρή, \
+                δομημένη εφαρμογή HTML & CSS. Χρησιμεύει τόσο ως άσκηση σχεδιασμού σε κώδικα όσο και ως βιτρίνα ανταποκρινόμενου σχεδιασμού ιστοσελίδων."
+        }
+    },
+    { 
+        id: 4, 
+        title: "Apotheke", 
+        subtitle: {en: "Order Management Web App", el: "Διαδικτυακή Εφαρμογή Διαχείρισης Παραγγελιών"}, 
+        image: [apotheke,  apotheke2], 
+        stack: [{ tech: "Angular", link: "https://angular.dev/"}, 
+                { tech: "Node.js", link: "https://nodejs.org/en"}], 
+        color: "#1d4cdbff", 
+        code: "https://github.com/kostasmr/Apotheke", 
+        demo: "", 
+        about: {
+            en: "Apotheke is a web application designed to streamline order management for users and administrators. \
+                It provides a seamless experience for placing, tracking, and managing orders. Whether you're a regular user or an admin, \
+                Apotheke ensures smooth operations with an intuitive interface and other features.",
+            el: "Το Apotheke είναι μια διαδικτυακή εφαρμογή που έχει σχεδιαστεί για να απλοποιεί τη διαχείριση παραγγελιών για χρήστες και διαχειριστές. \
+                Παρέχει μια απρόσκοπτη εμπειρία για την υποβολή, την παρακολούθηση και τη διαχείριση παραγγελιών. Είτε είστε τακτικός χρήστης είτε διαχειριστής, \
+                το Apotheke εξασφαλίζει ομαλή λειτουργία με ένα διαισθητικό περιβάλλον εργασίας και άλλες λειτουργίες."    
+        }
+    },
 ];
 
 const containerVariants = {
@@ -48,6 +127,12 @@ function Projects () {
 
     const [projects, setProjects] = useState(projectsData);
     const [activeProject, setActiveProject] = useState(null);
+    const {t, language} = useLanguage();
+
+    const project = {en: "project", el: "εργασία"}
+    const code = {en: "code", el: "κώδικας"}
+    const demo = {en: "demo", el: "βίντεο"}
+
 
     const rotateProjects = (index) => {
         const newOrder = [...projects.slice(index), ...projects.slice(0, index)];
@@ -95,7 +180,7 @@ function Projects () {
                             transition={{ duration: 1 }}
                             viewport={{ once: true }}
                         >
-                            <Text textStyle="sh">Projects</Text>
+                            <Text textStyle="sh">{t["projects"]}</Text>
                         </motion.div>
                         
                         <motion.div
@@ -155,7 +240,7 @@ function Projects () {
                                     </Box>
                                     <Box marginTop={{ sm: "3px",tablet: "5px",desktop:"10px"}}>
                                         <Text fontSize={index === 0 ? {sm: "10px",tablet: "14px", desktop: "20px",lg: "22px"} : {sm: "8px",tablet: "10px", desktop: "10px",lg: "20px"}}>{project.title}</Text>
-                                        <Text fontSize={index === 0 ? {sm: "8px",tablet: "10px", desktop: "14px",lg: "16px"} : {sm: "6px",tablet: "8px", desktop: "12px",lg: "14px"}} color="#ffffff50">{project.subtitle}</Text>
+                                        <Text fontSize={index === 0 ? {sm: "8px",tablet: "10px", desktop: "14px",lg: "16px"} : {sm: "6px",tablet: "8px", desktop: "12px",lg: "14px"}} color="#ffffff50">{project.subtitle[language]}</Text>
                                     </Box>
                                 </MotionFlex>
                             ))}
@@ -196,15 +281,15 @@ function Projects () {
                                             role="group"
                                         >
                                             <Image
-                                                src={activeProject.image[0]}
+                                                src={activeProject.image[1]}
                                                 objectFit="cover"
                                                 w="100%"
                                                 h="100%"
                                                 alt={activeProject.title}
-                                                _groupHover={{ filter: "blur(3px)" }}
+                                                // _groupHover={{ filter: "blur(3px)" }}
                                             />
 
-                                            <Flex
+                                            {/* <Flex
                                                 position="absolute"
                                                 top="0"
                                                 left="0"
@@ -227,7 +312,7 @@ function Projects () {
                                                 >
                                                     Gallery
                                                 </Box>
-                                            </Flex>
+                                            </Flex> */}
                                         </Box>
                                     </Flex>
                                     <Flex h={"full"} justify={"center"} align={"center"} display={{sm: "flex", desktop: "none"}}>
@@ -247,9 +332,9 @@ function Projects () {
                                                 <IoClose cursor="pointer" onClick={() => setActiveProject(null)} size={"30px"}/>
                                             </Flex>
                                             <Text textStyle="h">{activeProject.title}</Text>
-                                            <Text mt={{sm: "5px",desktop: "5px",lg: "10px"}} textStyle="h2">{activeProject.subtitle}</Text>
-                                            <Text mt={{sm: "10px",desktop: "30px",lg: "40px"}} w={"80%"} textStyle="t" letterSpacing={"3%"}>{activeProject.about}</Text>
-                                            <Flex mt={{sm: "20px",desktop: "30px",lg: "40px"}} gap={{sm: "10px",tablet: "20px",desktop: "30px",lg :"50px"}}>
+                                            <Text mt={{sm: "5px",desktop: "5px",lg: "5px"}} textStyle="h2">{activeProject.subtitle[language]}</Text>
+                                            <Text mt={{sm: "10px",desktop: "10px",lg: "10px"}} w={"90%"} textStyle="t" letterSpacing={"3%"}>{activeProject.about[language]}</Text>
+                                            <Flex mt={{sm: "20px",desktop: "20px",lg: "20px"}} gap={{sm: "10px",tablet: "20px",desktop: "30px",lg :"50px"}}>
                                                 {activeProject.stack?.map((stack, idx) => (
                                                     <Flex as="a" key={idx} target="_blank" href={stack.link} direction={"column"} align={"center"} justify={"center"}  cursor={"pointer"} role="group">
                                                         <Box fontSize={{sm: "25px",tablet: "40px",desktop: "60px",lg :"70px"}} color={"#575757ff"} _groupHover={{ color: activeProject?.color || "white" }}>
@@ -260,7 +345,7 @@ function Projects () {
                                                 ))}
                                             </Flex>
                                             <Flex align={"end"} h={"full"} justify={"space-between"}>
-                                                <Text textStyle="t">project 0{activeProject.id}</Text>
+                                                <Text textStyle="t">{project[language]} 0{activeProject.id}</Text>
                                                 {activeProject.code && (
                                                     <Link 
                                                         href={activeProject.code}
@@ -272,7 +357,7 @@ function Projects () {
                                                         transition="all 0.3s ease"
                                                         _hover={{ transform: "translateY(-4px)"}}
                                                     >
-                                                        <Text as="span" textStyle="t">code</Text>
+                                                        <Text as="span" textStyle="t">{code[language]}</Text>
                                                         <Box as={FiArrowUpRight} fontSize={{sm: "12px", tablet: "15px",desktop: "20px"}}/>
                                                     </Link>
                                                 )}
@@ -287,7 +372,7 @@ function Projects () {
                                                         transition="all 0.3s ease"
                                                         _hover={{ transform: "translateY(-4px)"}}
                                                     >
-                                                        <Text as="span" textStyle="t">demo</Text>
+                                                        <Text as="span" textStyle="t">{demo[language]}</Text>
                                                         <Box as={FiArrowUpRight} fontSize={{sm: "12px", tablet: "15px",desktop: "20px"}}/>
                                                     </Link>
                                                 )}
