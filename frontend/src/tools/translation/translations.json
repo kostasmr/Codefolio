@@ -5,11 +5,20 @@
         "experience": "Work Experience",
         "projects": "Projects",
         "skills": "Skills",
-        "contacts": "Contacts",
+        "hard_skills": "Hard Skills",
+        "soft_skills": "Soft Skills",
+        "contact": "Contact",
         "name": "Konstantinos Mourousidis",
         "software": "SOFTWARE",
         "engineer": "ENGINEER",
-        "seemywork": "scroll down"
+        "seemywork": "see my work",
+        "letswork": "Let`s work",
+        "together": "together",
+        "LETSWORK": "LETS WORK",
+        "TOGETHER": "TOGETHER",
+        "sendme": "Send me a message",
+        "thess": "Thessaloniki",
+        "gr": "Greece"
     },
     "el": {
       "aboutme": "Σχετικά με εμένα",
@@ -17,10 +26,19 @@
       "experience": "Εμπειρία",
       "projects": "Εργασίες",
       "skills": "Δεξιότητες",
-      "contacts": "Επικοινωνία",
+      "hard_skills": "Τεχνικές Δεξιότητες",
+      "soft_skills": "Προσωπικές Δεξιότητες",
+      "contact": "Επικοινωνία",
       "name": "Κωνσταντίνος Μουρουσίδης",
       "software": "ΜΗΧΑΝΙΚΟΣ",
       "engineer": "ΛΟΓΙΣΜΙΚΟΥ",
-      "seemywork": "κατεβείτε προς τα κάτω"
+      "seemywork": "δείτε τη δουλειά μου",
+      "LETSWORK": "ΑΣ ΣΥΝΕΡΓΑΣΤΟΥΜΕ",
+      "TOGETHER": "ΜΑΖΙ",
+      "letswork": "Ας συνεργαστούμε",
+      "together": "μαζί",
+      "sendme": "Στείλε μου ένα μήνυμα",
+      "thess": "Θεσσαλονίκη",
+      "gr": "Ελλάδα"
     }
   }
