@@ -1,15 +1,14 @@
 import gradientImg from '../assets/images/gradient-image.png';
 import profileImg from '../assets/images/my-image.jpg';
-import arrowDown from '../assets/icons/arrow-down.png';
+import { FiArrowDown } from "react-icons/fi";
 import menu from '../assets/icons/menu.png';
 import { Container, Image, Text, Flex, Box, Link} from "@chakra-ui/react";
 import { useLanguage } from '../tools/translation/useLanguage';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { IoClose } from "react-icons/io5";
+import { IoClose, IoLocationOutline } from "react-icons/io5";
 import { FaPhoneAlt, FaLinkedin, FaGithubSquare } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-
 import ScrapbookAnimation from '../tools/ScrapbookAnimation';
 
 
@@ -48,6 +47,8 @@ function Welcome () {
     const { language, toggleLanguage, t} = useLanguage();
     const [showNav, setShowNav] = useState(false);
     const MotionBox = motion(Box);
+    const navRef = useRef();
+
 
     const toggleNav = () => setShowNav(prev => !prev);
 
@@ -60,6 +61,23 @@ function Welcome () {
         }
         return () => {
             document.body.style.overflow = "";
+        };
+    }, [showNav]);
+
+    // close nav when click outside 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (navRef.current && !navRef.current.contains(event.target)) {
+            setShowNav(false);
+            }
+        };
+
+        if (showNav) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [showNav]);
 
@@ -93,7 +111,7 @@ function Welcome () {
                         w={"full"}
                     > 
                         <Box as="button" onClick={toggleNav}>
-                            <Image src={menu} w={{sm:"25px", tablet:"40px"}} alt="Menu Icon" />
+                            <Image src={menu} w={{sm:"20px", tablet:"40px"}} alt="Menu Icon" />
                         </Box>                
                         <Text letterSpacing={{sm: "2px", tablet: "3px",lg: "5px"}}  marginLeft={"1px"} textStyle="t">
                             Codefolio
@@ -145,8 +163,8 @@ function Welcome () {
                         align={"center"}
                     >
                         <Text letterSpacing={{sm: "2px", tablet: "3px",lg: "5px"}} textStyle="tb">{t["name"]}</Text>
-                        <Flex gap={{sm: 2,lg: 5}} align={"center"}>
-                            <Image src={arrowDown} w={{sm:"15px", tablet:"30px"}} alt="Arrow Icon"/>
+                        <Flex gap={{sm: 2,lg: 5}} alignItems={"end"}>
+                            <Box as={FiArrowDown} fontSize={{sm: "12px", tablet: "15px",desktop: "25px"}}/>
                             <Text letterSpacing={{sm: "1px", tablet: "3px",lg: "5px"}} textStyle="t">{t["seemywork"]}</Text>
                         </Flex>
                     </Flex>
@@ -154,6 +172,7 @@ function Welcome () {
                 <AnimatePresence>
                 {showNav && (
                     <MotionBox
+                        ref={navRef}
                         initial={{ opacity: 0, y: -500 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -500 }}
@@ -163,7 +182,7 @@ function Welcome () {
                         left={0}
                         width="100%"
                         height="auto"
-                        padding={5}
+                        padding={{ sm: "1", tablet:"3", desktop:"5"}}
                         bg="rgba(0,0,0,0)"
                         color="white"
                         zIndex={10}
@@ -176,44 +195,51 @@ function Welcome () {
                             paddingY={{sm: "10px",tablet: "15px",lg:"20px"}}
                             w={"full"}
                             bg={"#101D1F"}
-                            gap={20}
+                            gap={{sm: 10,tablet: 20}}
+                            direction={"row"}
                         > 
-                            <Box fontSize={{sm:"25px", tablet:"40px"}} _hover={{ color: "teal.600" }} h={"fit-content"}>
+                            <Box fontSize={{sm:"20px", tablet:"40px"}} _hover={{ color: "teal.600" }} h={"fit-content"}>
                                 <IoClose cursor="pointer" onClick={toggleNav} _hover={{ color: "teal" }}/>
                             </Box>
-                            <Flex gap={"100px"} py="40px" marginEnd={"auto"}>
-                                <Text textStyle="t">Codefolio</Text>
-                                <Flex direction={"column"} gap={3} textStyle="t">
-                                    <Text as="a" href="#about" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>About Me</Text>
-                                    <Text as="a" href="#education" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Education</Text>
-                                    <Text as="a" href="#experience" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Experience</Text>
-                                    <Text as="a" href="#projects" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Projects</Text>
-                                    <Text as="a" href="#skills" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Skills</Text>
-                                    <Text as="a" href="#contact" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>Contact</Text>
+                            <Flex gap={{sm: "20px",tablet: "100px"}} py={{sm: "10px",tablet: "40px"}} marginEnd={"auto"}>
+                                <Text textStyle="t" textColor={'teal.600'}>Codefolio</Text>
+                                <Flex direction={"column"} gap={{sm: 2,tablet: 4}} textStyle="t">
+                                    <Text as="a" href="#about" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>{t["aboutme"]}</Text>
+                                    <Text as="a" href="#education" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>{t["education"]}</Text>
+                                    <Text as="a" href="#experience" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>{t["experience"]}</Text>
+                                    <Text as="a" href="#projects" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>{t["projects"]}</Text>
+                                    <Text as="a" href="#skills" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>{t["skills"]}</Text>
+                                    <Text as="a" href="#contact" cursor="pointer" onClick={() => setShowNav(false)} transition="all 0.3s ease" _hover={ { textColor: "teal.600", transform: "translateX(20px)" }}>{t["contact"]}</Text>
                                 </Flex>
                             </Flex>
-                            <Flex direction={"column"} textStyle="ts" gap={3} py="40px">
-                                <Text mb={4}>Let`s work together</Text>
-                                <Flex align={"center"} gap={3}>
-                                    <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "20px", lg: "20px" }}>
+                            <Flex direction={"column"} textStyle="ts" gap={{sm: 2,tablet: 4}} py={{sm: "10px",tablet: "40px"}} paddingEnd={{sm: "10px",tablet: "50px",desktop: "100px"}}>
+                                <Text mb={{sm: 2,tablet: 4}} textColor={'teal.600'} textStyle="t">{t["letswork"]} {t["together"]}</Text>
+                                <Flex align={"center"} gap={{sm: 2,tablet: 3}}>
+                                    <Box fontSize={{ sm: "8px", tablet: "15px", desktop: "20px", lg: "20px" }}>
                                         <FaPhoneAlt />
                                     </Box>
                                     <Text>+30 697 596 0090</Text>
                                 </Flex>
-                                <Flex align={"center"} gap={3} marginEnd={"auto"}>
-                                    <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "25px", lg: "25px" }}>
+                                <Flex align={"center"} gap={{sm: 2,tablet: 3}} marginEnd={"auto"}>
+                                    <Box fontSize={{ sm: "11px", tablet: "17px", desktop: "25px", lg: "25px" }}>
                                         <MdEmail />
                                     </Box>
                                     <Text>kmourousidis@gmail.com</Text>
                                 </Flex>
-                                <Flex gap={{sm: 2,tablet: 5}} align={"end"} h={"full"}>
+                                <Flex align={"center"} gap={{sm: 2,tablet: 3}} marginEnd={"auto"}>
+                                    <Box fontSize={{ sm: "11px", tablet: "17px", desktop: "25px", lg: "25px" }}>
+                                        <IoLocationOutline />
+                                    </Box>
+                                    <Text>{t["thess"]}, {t["gr"]}</Text>
+                                </Flex>
+                                <Flex gap={{sm: 2,tablet: 2, desktop: 5}} align={"end"} h={"full"}>
                                     <Link href="https://www.linkedin.com/in/konstantinos-mourousidis" isExternal transition="all 0.3s ease" _hover={{ color: "teal.600", transform: "translateY(-4px)" }}>
-                                        <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "30px", lg: "30px" }}>
+                                        <Box fontSize={{ sm: "15px", tablet: "20px", desktop: "30px", lg: "30px" }}>
                                             <FaLinkedin />
                                         </Box>
                                     </Link>
                                     <Link href="https://github.com/kostasmr" isExternal transition="all 0.3s ease" _hover={{ color: "teal.600", transform: "translateY(-4px)" }}>
-                                        <Box fontSize={{ sm: "20px", tablet: "30px", desktop: "30px", lg: "30px" }}>
+                                        <Box fontSize={{ sm: "15px", tablet: "20px", desktop: "30px", lg: "30px" }}>
                                             <FaGithubSquare />
                                         </Box>
                                     </Link>
