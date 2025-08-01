@@ -2,6 +2,7 @@ import { Container, Text, Flex, Image, Box, Grid, GridItem} from "@chakra-ui/rea
 import hardSkillsImg from '../assets/images/hardskills-image.png';
 import softSkillsImg from '../assets/images/softskills-image.png';
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from '../tools/translation/useLanguage';
 import { useRef } from "react";
 
 
@@ -16,16 +17,19 @@ const MotionText = motion(Text);
 function Skills () {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-20px" });
+    const {t, language} = useLanguage();
+
 
     const skills = [
-        { name: "Problem Solving", percentage: 90 },
-        { name: "Teamwork", percentage: 80 },
-        { name: "Adaptability", percentage: 85 },
-        { name: "Creativity", percentage: 75 },
-        { name: "Attention to Detail", percentage: 90 },
+        { name: {en: "Problem Solving", el: "Επίλυση προβλημάτων"}, percentage: 90 },
+        { name: {en: "Teamwork", el: "Ομαδικότητα"}, percentage: 80 },
+        { name: {en: "Adaptability", el: "Προσαρμοστικότητα"}, percentage: 85 },
+        { name: {en: "Creativity", el: "Δημιουργικότητα"}, percentage: 75 },
+        { name: {en: "Attention to Detail", el: "Προσοχή στη λεπτομέρεια"}, percentage: 90 },
     ];
 
-    const hardSkills = [
+    const hardSkills = 
+    [
         "JAVA",
         "PYTHON",
         "HTML/CSS",
@@ -36,6 +40,7 @@ function Skills () {
         "DATABASES: MONGODB, MYSQL",
         "TOOLS: VS CODE, ANDROID SDK, GITHUB, FIGMA, POSTMAN"
     ]
+
 
     const getGradient = (percentage) => {
         const whiteStart = Math.min(percentage + 7, 100);
@@ -54,7 +59,7 @@ function Skills () {
                     viewport={{ once: true }}
                 >
                         <Text textStyle="t">/05</Text>
-                        <Text textStyle="sh">Hard Skills</Text> 
+                        <Text textStyle="sh">{t["hard_skills"]}</Text> 
                 </MotionFlex>
                 <Flex paddingInline={{sm: "5%", desktop: "10%"}} align={"center"} justify={"space-between"} h="full">
                     <Flex direction={"column"}>
@@ -92,7 +97,7 @@ function Skills () {
                     transition={{ duration: 1 }}
                     viewport={{ once: true }}
                 >
-                    Soft Skills
+                    {t["soft_skills"]}
                 </MotionText> 
                 
                 <Grid templateColumns="repeat(2, 1fr)" gap="1" h="full" paddingInline={{sm: "5%", desktop: "10%"}}>
@@ -116,7 +121,7 @@ function Skills () {
                             {skills.map((skill, index) => (
                                 <Box key={index} marginBottom="20px">
                                     <Flex justify="space-between" marginBottom={{sm:"5px",tablet: "5px",desktop: "10px"}}>
-                                        <Text textStyle="t">{skill.name}</Text>
+                                        <Text textStyle="t">{skill.name[language]}</Text>
                                         <Text textStyle="t">{skill.percentage}%</Text>
                                     </Flex>
                                     <Box
