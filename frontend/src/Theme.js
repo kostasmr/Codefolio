@@ -77,6 +77,7 @@ const theme = extendTheme({
         fontSize: '16px',
         fontWeight: 400,
         lineHeight: '1.5',
+        color: "#fff",
         bg: 'black',
         scrollBehavior: 'smooth',
         margin: 0,
