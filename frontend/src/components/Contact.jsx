@@ -1,4 +1,4 @@
-import gradientImg from '../assets/images/letswork-image.png';
+import gradientImg from '../assets/images/letswork-image.webp';
 import { Container, Image, Text, Flex, Link, Box} from "@chakra-ui/react";
 import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 import { useLanguage } from '../tools/translation/useLanguage';
