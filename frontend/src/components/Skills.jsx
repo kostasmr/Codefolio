@@ -101,7 +101,7 @@ function Skills () {
                 </MotionText> 
                 
                 <Grid templateColumns="repeat(2, 1fr)" gap="1" h="full" paddingInline={{sm: "5%", desktop: "10%"}}>
-                    <GridItem colSpan={{sm: 0,tablet: 1}} alignContent={"center"}>
+                    <GridItem colSpan={{sm: 0,tablet: 1}} display="flex" alignItems="center" >
                         <MotionImage 
                             src={softSkillsImg}
                             alt="Soft Skills Image"
@@ -116,7 +116,7 @@ function Skills () {
                         />
 
                     </GridItem>
-                    <GridItem colSpan={{sm: 2,tablet: 1}} alignContent={"center"}>
+                    <GridItem colSpan={{sm: 2,tablet: 1}} display="flex" alignItems="center" >
                         <Flex direction="column" marginStart={{sm: "0px",tablet: "10px"}} flex={1} ref={ref}>
                             {skills.map((skill, index) => (
                                 <Box key={index} marginBottom="20px">
