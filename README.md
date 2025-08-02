@@ -8,6 +8,10 @@
 
 [Codefolio](https://codefolio-sage.vercel.app/)
 
+## 🧑‍🎨 Figma Prototypes
+
+Check out the [Figma Prototypes](https://www.figma.com/design/auZklv4eGU0RKondKCWaRT/Codefolio?node-id=0-1&m=dev&t=M91mvS8vWNn5B3XU-1)
+
 ## 🛠 Tech Stack
 
 - **Frontend**: React + Chakra UI
